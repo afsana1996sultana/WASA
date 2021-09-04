@@ -18,7 +18,7 @@ namespace WASA.Controllers
         {
             if (userModel.UserName == "Afsana" && userModel.password == "1234")
             {
-                return View("Home", userModel);
+                return View("Dashboard", userModel);
             } else
             {
                 return View("LoginFailure", userModel);
