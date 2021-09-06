@@ -9,6 +9,12 @@ namespace WASA.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
+            return View();
+        } 
+
+        [HttpGet]
+        public IActionResult GetWasaReport()
+        {
             string connetionString;
             SqlConnection cnn;
             connetionString = @"Server=localhost;Database=Wasa_Dev_Db;Trusted_Connection=True;MultipleActiveResultSets=true";
