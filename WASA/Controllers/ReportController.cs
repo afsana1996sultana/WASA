@@ -17,7 +17,7 @@ namespace WASA.Controllers
         {
             string connetionString;
             SqlConnection cnn;
-            connetionString = @"Server=localhost;Database=Wasa_Dev_Db;Trusted_Connection=True;MultipleActiveResultSets=true";
+            connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
             cnn = new SqlConnection(connetionString);
             try
             {
@@ -34,5 +34,6 @@ namespace WASA.Controllers
 
             return View();
         }
+       
     }
 }
