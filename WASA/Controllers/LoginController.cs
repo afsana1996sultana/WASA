@@ -16,7 +16,6 @@ namespace WASA.Controllers
         }
 
         [HttpGet]
-
         public IActionResult Dashboard()
         {
             List<UserModel> userModels = new List<UserModel>();
@@ -53,24 +52,55 @@ namespace WASA.Controllers
             return View();
 
         }
+
+
+        public IActionResult ProcessLogin(UserModel userModel)
+        {
+            List<UserModel> userModels = new List<UserModel>();
+            string connectionString;
+            SqlConnection cnn;
+           // connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            connectionString = @"Server=localhost;Database=Wasa_Dev_Db;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cnn = new SqlConnection(connectionString);
+            try
+            {
+
+                cnn.Open();
+                string query = $"Select * from Users Where UserName='{userModel.UserName }' and Password='{userModel.password}'";
+                SqlCommand cmd = new SqlCommand(query, cnn);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows)
+                {
+                    ViewData["Dashboard"] = userModels;
+                    return View("Dashboard", userModel);
+                }
+                else
+                {
+                    return View("LoginFailure", userModel);
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+          
+
+
+        }
     }
 }
 
-            
-
-        
-
-               
 
 
-        //public IActionResult ProcessLogin(UserModel userModel)
-        //{
-        //    if (userModel.UserName == "Afsana" && userModel.password == "1234")
-        //    {
-        //        return View("Dashboard", userModel);
-        //    } else
-        //    {
-        //        return View("LoginFailure", userModel);
-        //    }
-           
-        //}
+
+
+
+
+
