@@ -1,29 +1,4 @@
-﻿@*<html>
-    <head>
-        <style>
-            table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-            }
-
-            td, th {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
-
-            tr:nth-child(even) {
-                background-color: #dddddd;
-            }
-        </style>
-    </head>
-    <body
-        <h2>HTML Table</h2>
-    </body>
-    </html>*@
-
-
+﻿
 
 @{List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
 
@@ -31,46 +6,92 @@
 <table>
 
     <thead>
-        <h2 style="text-align:center;">WASA Report</h2>
-    </thead>
-   
-    <br />
+        <div style="background-color: cornflowerblue;">
 
-   <th>SI</th>
-   <th>Date</th>
-   <th>Flow</th>
-   <th>Level</th>
-   <th>Runtime</th>
-   <th>Stoptime</th>
-   <th>KWH</th>
-   <th>Production</th>
+            <style>
+                img {
+                    float: left;
+                    padding-left: 500px;
+                    padding-top: 12px;
+                }
+
+                h2 {
+                    padding-bottom: 50px;
+                    padding-top: 68px;
+                }
+            </style>
+            <img src="~/image/logo.png" />
+            <h2>WASA Report</h2>
+        </div>
+    </thead>
+
+    <div>
+        
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>jQuery UI Datepicker - Default functionality</title>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <link rel="stylesheet" href="/resources/demos/style.css">
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script>
+                $(function () {
+                    $("#datepicker").datepicker();
+                });
+            </script>
+        </head>
+        <body>
+            <style>
+               p {
+                   float:left;
+               }
+            </style>
+
+            <p>To: <input data="text" id="datepicker"></p>
+            <p>From: <input data="text" id="datepicker"></p>
+
+
+
+        </body>
+    </div>
+
+
+    <th>SI</th>
+    <th>Date</th>
+    <th>Flow</th>
+    <th>Level</th>
+    <th>Runtime</th>
+    <th>Stoptime</th>
+    <th>KWH</th>
+    <th>Production</th>
     <th>Production Cum</th>
 
-@foreach (WASA.Models.WasaReportModel D in Li)
-{
-    <tr>
+    @foreach (WASA.Models.WasaReportModel D in Li)
+    {
+        <tr>
 
-        <td>@D.Serial</td>
+            <td>@D.Serial</td>
 
-        <td>@D.Date</td>
+            <td>@D.Date</td>
 
-        <td>@D.Flow</td>
+            <td>@D.Flow</td>
 
-        <td>@D.Level</td>
+            <td>@D.Level</td>
 
-        <td>@D.Runtime</td>
+            <td>@D.Runtime</td>
 
-        <td>@D.Stoptime</td>
+            <td>@D.Stoptime</td>
 
-        <td>@D.KWH</td>
+            <td>@D.KWH</td>
 
-        <td>@D.Production</td>
+            <td>@D.Production</td>
 
-        <td>@D.ProductionCum</td>
+            <td>@D.ProductionCum</td>
 
 
-    </tr>
-}
+        </tr>
+    }
 
 </table>
 
@@ -90,6 +111,5 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
-  
-
 </style>
+

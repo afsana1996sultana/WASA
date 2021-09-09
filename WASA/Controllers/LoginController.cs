@@ -59,14 +59,14 @@ namespace WASA.Controllers
             List<UserModel> userModels = new List<UserModel>();
             string connectionString;
             SqlConnection cnn;
-           // connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-            connectionString = @"Server=localhost;Database=Wasa_Dev_Db;Trusted_Connection=True;MultipleActiveResultSets=true";
+           connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            //connectionString = @"Server=localhost;Database=Wasa_Dev_Db;Trusted_Connection=True;MultipleActiveResultSets=true";
             cnn = new SqlConnection(connectionString);
             try
             {
 
                 cnn.Open();
-                string query = $"Select * from Users Where UserName='{userModel.UserName }' and Password='{userModel.password}'";
+                string query = $"Select * from SystemUsers Where UserName='{userModel.UserName }' and Password='{userModel.password}'";
                 SqlCommand cmd = new SqlCommand(query, cnn);
                 SqlDataReader rd = cmd.ExecuteReader();
                 if (rd.HasRows)
