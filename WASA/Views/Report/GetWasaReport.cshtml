@@ -25,37 +25,27 @@
         </div>
     </thead>
 
-    <div>
-        
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>jQuery UI Datepicker - Default functionality</title>
-            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-            <link rel="stylesheet" href="/resources/demos/style.css">
-            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-            <script>
-                $(function () {
-                    $("#datepicker").datepicker();
-                });
-            </script>
-        </head>
-        <body>
-            <style>
-               p {
-                   float:left;
-               }
-            </style>
+  
+    <br/>
+    
+    <div class="search">
 
-            <p>To: <input data="text" id="datepicker"></p>
-            <p>From: <input data="text" id="datepicker"></p>
+        <input type="date" id="myDate" value="yyyy-mm-dd">
+        <input type="date" id="myDate" value="yyyy-mm-dd">
+        <input type="button" value="Search" onclick="msg()">
+        <input type="button" value="Refresh" onclick="msg()">
 
 
+       
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myDate").value;
+                document.getElementById("demo").innerHTML = x;
+                
+        </script>
 
-        </body>
     </div>
-
+    <br/>
 
     <th>SI</th>
     <th>Date</th>
