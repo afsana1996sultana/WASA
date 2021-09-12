@@ -25,9 +25,16 @@
         </div>
     </thead>
 
-  
-    <br/>
-    
+
+    <div class="alert-dismissible">
+        <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
+        <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
+        <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
+        <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
+
+    </div>
+    <br />
+
     <div class="search">
 
         <input type="date" id="myDate" value="yyyy-mm-dd">
@@ -36,16 +43,16 @@
         <input type="button" value="Refresh" onclick="msg()">
 
 
-       
+
         <script>
             function myFunction() {
                 var x = document.getElementById("myDate").value;
                 document.getElementById("demo").innerHTML = x;
-                
+
         </script>
 
     </div>
-    <br/>
+    <br />
 
     <th>SI</th>
     <th>Date</th>
