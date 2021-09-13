@@ -12,11 +12,11 @@
                 img {
                     float: left;
                     padding-left: 500px;
-                    padding-top: 12px;
+                    padding-top: 10px;
                 }
 
                 h2 {
-                    padding-bottom: 50px;
+                    padding-bottom: 40px;
                     padding-top: 68px;
                 }
             </style>
@@ -26,33 +26,22 @@
     </thead>
 
 
-    <div class="alert-dismissible">
+    @*<div class="alert-dismissible">
         <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
         <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
         <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
         <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
 
-    </div>
+    </div>*@
     <br />
 
-    <div class="search">
-
-        <input type="date" id="myDate" value="yyyy-mm-dd">
-        <input type="date" id="myDate" value="yyyy-mm-dd">
-        <input type="button" value="Search" onclick="msg()">
-        <input type="button" value="Refresh" onclick="msg()">
-
-
-
-        <script>
-            function myFunction() {
-                var x = document.getElementById("myDate").value;
-                document.getElementById("demo").innerHTML = x;
-
-        </script>
-
-    </div>
-    <br />
+    <p style="padding-left:750px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+        
+        <span style="font-size:larger;"> From : </span><input type="date"  name="start" id="myDate" value="yyyy-mm-dd">
+        <span style="font-size:larger;"> To : </span><input type="date"  name="end" id="myDate" value="yyyy-mm-dd">
+        <input type="submit" name="submit" value="Search"/>
+        <input type="submit" name="submit" value="Refresh"/>
+    </p>
 
     <th>SI</th>
     <th>Date</th>
@@ -103,6 +92,7 @@
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
+       
     }
 
     tr:nth-child(even) {

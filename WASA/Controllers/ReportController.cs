@@ -9,8 +9,6 @@ namespace WASA.Controllers
     public class ReportController : Controller
     {
 
-        //private string id;
-        //private object lr;
 
         [HttpGet]
         public IActionResult GetAll()
@@ -20,7 +18,7 @@ namespace WASA.Controllers
 
 
         [HttpGet]
-        public IActionResult GetWasaReport()
+        public IActionResult GetWasaReport(/*DateTime? from,DateTime? to*/)
         {
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
@@ -29,6 +27,9 @@ namespace WASA.Controllers
             cnn = new SqlConnection(connetionString);
             try
             {
+                //string sqlquary = "select * from [dbo].[tbReports] where startingDate between'" + from+ "'and'" + to + "'";
+                //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
+                //cnn.Open();
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand("Select * from tbReports", cnn);
 
@@ -73,6 +74,9 @@ namespace WASA.Controllers
             ViewData["WasaReport"] = rportlist;
 
             return View();
+
+      
+
         }
     }
 }
