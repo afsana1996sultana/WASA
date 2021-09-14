@@ -32,7 +32,7 @@ namespace WASA.Controllers
             try
             {
                 //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
-                string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
+               // string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
                 //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
                 //cnn.Open();
                 cnn.Open();
