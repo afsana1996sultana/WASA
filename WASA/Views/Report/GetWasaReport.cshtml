@@ -27,20 +27,21 @@
 
 
     @*<div class="alert-dismissible">
-        <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
-        <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
-        <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
-        <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
+            <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
+            <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
+            <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
+            <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
 
-    </div>*@
+        </div>*@
     <br />
 
-    <p style="padding-left:750px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
-        
-        <span style="font-size:larger;"> From : </span><input type="date"  name="start" id="myDate" value="yyyy-mm-dd">
-        <span style="font-size:larger;"> To : </span><input type="date"  name="end" id="myDate" value="yyyy-mm-dd">
-        <input type="submit" name="submit" value="Search"/>
-        <input type="submit" name="submit" value="Refresh"/>
+    <p style="padding-left:670px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+
+        <span style="font-size:larger;"> From : </span><input type="date" name="start" id="myDate" value="yyyy-mm-dd">
+        <span style="font-size:larger;"> To : </span><input type="date" name="end" id="myDate" value="yyyy-mm-dd">
+        <input type="submit" name="submit" value="Search" />
+        <input type="submit" name="submit" value="Refresh" />
+        <input type="submit" name="submit" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" value="PDF" />
     </p>
 
     <th>SI</th>
@@ -81,6 +82,15 @@
 
 </table>
 
+@{Html.BeginForm("PrintInvoice", "Report", FormMethod.Get);
+    {
+        <div>
+            <input type="submit" value="Create Document" style="width:150px;height:27px" />
+        </div>
+    }
+    Html.EndForm();
+}
+
 <style>
     table {
         font-family: arial, sans-serif;
@@ -92,7 +102,6 @@
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
-       
     }
 
     tr:nth-child(even) {

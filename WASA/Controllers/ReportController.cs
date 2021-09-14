@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Graphics;
 using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using WASA.Models;
 
 namespace WASA.Controllers
@@ -76,6 +80,31 @@ namespace WASA.Controllers
             return View();
 
       
+
+        }
+
+
+        [HttpGet]
+        public ActionResult PrintInvoice()
+        {
+            using (PdfDocument document = new PdfDocument())
+            {
+                //Add a page to the document
+                PdfPage page = document.Pages.Add();
+
+                //Create PDF graphics for the page
+                PdfGraphics graphics = page.Graphics;
+
+                //Set the standard font
+                PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
+
+                //Draw the text
+                graphics.DrawString("Hello World!!!", font, PdfBrushes.Black, new PointF(0, 0));
+
+                // Open the document in browser after saving it
+
+                return View();
+            }
 
         }
     }
