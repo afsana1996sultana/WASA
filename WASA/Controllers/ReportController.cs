@@ -22,7 +22,7 @@ namespace WASA.Controllers
 
 
         [HttpGet]
-        public IActionResult GetWasaReport(/*DateTime? from,DateTime? to*/)
+        public IActionResult GetWasaReport(DateTime? from,DateTime? to)
         {
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
@@ -31,7 +31,8 @@ namespace WASA.Controllers
             cnn = new SqlConnection(connetionString);
             try
             {
-                //string sqlquary = "select * from [dbo].[tbReports] where startingDate between'" + from+ "'and'" + to + "'";
+                //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
+                string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
                 //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
                 //cnn.Open();
                 cnn.Open();
