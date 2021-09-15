@@ -1,95 +1,96 @@
-﻿
+﻿<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 @{List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
 
 }
-<table>
-
-    <thead>
-        <div style="background-color: cornflowerblue;">
-
-            <style>
-                img {
-                    float: left;
-                    padding-left: 500px;
-                    padding-top: 10px;
-                }
-
-                h2 {
-                    padding-bottom: 40px;
-                    padding-top: 68px;
-                }
-            </style>
-            <img src="~/image/logo.png" />
-            <h2>WASA Report</h2>
-        </div>
-    </thead>
 
 
-    @*<div class="alert-dismissible">
-            <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
-            <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
-            <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
-            <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
-
-        </div>*@
-    <br />
-
-    <p style="padding-left:670px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
-
-        <span style="font-size:larger;"> From : </span><input type="date" name="start" id="myDate" value="yyyy-mm-dd">
-        <span style="font-size:larger;"> To : </span><input type="date" name="end" id="myDate" value="yyyy-mm-dd">
-        <input type="submit" value="Search" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" />
-        <input type="submit" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" />
-        <input type="submit" name="submit" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" value="PDF" />
-    </p>
-
-    <th>SI</th>
-    <th>Date</th>
-    <th>Flow</th>
-    <th>Level</th>
-    <th>Runtime</th>
-    <th>Stoptime</th>
-    <th>KWH</th>
-    <th>Production</th>
-    <th>Production Cum</th>
-
-    @foreach (WASA.Models.WasaReportModel D in Li)
-    {
-        <tr>
-
-            <td>@D.Serial</td>
-
-            <td>@D.Date</td>
-
-            <td>@D.Flow</td>
-
-            <td>@D.Level</td>
-
-            <td>@D.Runtime</td>
-
-            <td>@D.Stoptime</td>
-
-            <td>@D.KWH</td>
-
-            <td>@D.Production</td>
-
-            <td>@D.ProductionCum</td>
 
 
-        </tr>
-    }
+@{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
 
-</table>
+    <table id="tblPump">
 
-@{Html.BeginForm("PrintInvoice", "Report", FormMethod.Get);
-    {
-        <div>
-            <input type="submit" value="Create Document" style="width:150px;height:27px" />
-        </div>
-    }
-    Html.EndForm();
+        <thead>
+            <div style="background-color: cornflowerblue;">
+
+                <style>
+                    img {
+                        float: left;
+                        padding-left: 500px;
+                        padding-top: 10px;
+                    }
+
+                    h2 {
+                        padding-bottom: 40px;
+                        padding-top: 68px;
+                    }
+                </style>
+                <img src="~/image/logo.png" />
+                <h2>WASA Report</h2>
+            </div>
+        </thead>
+
+
+        @*<div class="alert-dismissible">
+                <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
+                <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
+                <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
+                <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
+
+            </div>*@
+        <br />
+
+        <p style="padding-left:670px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+
+            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
+            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
+            <input type="submit" value="Search" onclick="searchClick()" />
+            <input type="submit" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" />
+            <input type="button" id="btnExport" value="Export" onclick="Export()" />
+            @*<input type="submit" name="submit" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" value="PDF" />*@
+        </p>
+
+        <th>SI</th>
+        <th>Date</th>
+        <th>Flow</th>
+        <th>Level</th>
+        <th>Runtime</th>
+        <th>Stoptime</th>
+        <th>KWH</th>
+        <th>Production</th>
+        <th>Production Cum</th>
+
+        @foreach (WASA.Models.WasaReportModel D in Li)
+        {
+            <tr>
+
+                <td>@D.Serial</td>
+
+                <td>@D.Date</td>
+
+                <td>@D.Flow</td>
+
+                <td>@D.Level</td>
+
+                <td>@D.Runtime</td>
+
+                <td>@D.Stoptime</td>
+
+                <td>@D.KWH</td>
+
+                <td>@D.Production</td>
+
+                <td>@D.ProductionCum</td>
+
+
+            </tr>
+        }
+
+    </table>
 }
+
 
 <style>
     table {
@@ -110,6 +111,50 @@
 </style>
 
 <script>
-    // search button er onclick ee action method call mvc 
+    // search button er onclick ee action method call mvc
+    //$(document).ready(function () { });
+        // Initialization
+
+        //function searchClick() {
+        //    var dateFrom = document.getElementById('fromDate');
+        //    var dateTo = document.getElementById('toDate');
+
+        //    $.ajax(
+        //        {
+        //            type: 'POST',
+        //            dataType: 'JSON',
+        //            url: '/Report/GetWasaReportFilter',
+        //            data: { from: dateFrom, to: dateTo },
+        //            success:
+        //                function (response) {
+        //                    // Generate HTML table.
+        //                    convertJsonToHtmlTable(JSON.parse(response), $("#TableId"));
+        //                },
+        //            error:
+        //                function (response) {
+        //                    alert("Error: " + response);
+        //                }
+        //        });
+
+        //});
+        //}
+
+    function Export() {
+        html2canvas(document.getElementById('tblPump'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Table.pdf");
+            }
+        });
+       }
+       
+
+
 </script>
 

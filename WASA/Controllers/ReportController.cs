@@ -23,15 +23,7 @@ namespace WASA.Controllers
         }
 
 
-        //[HttpGet]
-        //public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
-        //{
-        //    string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from + "'and'" + to + "'";
-        //    //string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
-        //    SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
-        //    cnn.Open();
-        //    return View();
-        //}
+       
 
 
         [HttpGet]
@@ -44,10 +36,10 @@ namespace WASA.Controllers
             cnn = new SqlConnection(connetionString);
             try
             {
-                 string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
+                 //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
                 //string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
-                SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
-                cnn.Open();
+                //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
+                //cnn.Open();
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand("Select * from tbReports", cnn);
 
@@ -94,6 +86,67 @@ namespace WASA.Controllers
             return View();
 
       
+
+        }
+        [HttpGet]
+        public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
+        {
+
+
+            List<WasaReportModel> rportlist = new List<WasaReportModel>();
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                 string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from.Value.Date+ "'and'" + to.Value.Date + "'";
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sqlquary, cnn);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+
+                {
+
+                    WasaReportModel p = new WasaReportModel();
+                    p.Serial = Convert.ToInt64(rd[0]);
+
+                    p.Date = Convert.ToDateTime(rd[1]).Date;
+                    rportlist.Add(p);
+
+                    p.Flow = Convert.ToInt64(rd[2]);
+
+                    p.Level = Convert.ToInt64(rd[3]);
+
+                    p.Runtime = Convert.ToInt64(rd[4]);
+
+                    p.Stoptime = Convert.ToInt64(rd[5]);
+
+                    p.KWH = Convert.ToInt64(rd[6]);
+
+                    p.Production = Convert.ToInt64(rd[7]);
+
+                    p.ProductionCum = Convert.ToInt64(rd[8]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                //throw ex;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            ViewData["WasaReport"] = rportlist;
+
+            return View("GetWasaReport");
+
+
 
         }
 
