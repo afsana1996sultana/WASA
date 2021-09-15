@@ -39,8 +39,8 @@
 
         <span style="font-size:larger;"> From : </span><input type="date" name="start" id="myDate" value="yyyy-mm-dd">
         <span style="font-size:larger;"> To : </span><input type="date" name="end" id="myDate" value="yyyy-mm-dd">
-        <input type="submit" name="submit" value="Search" />
-        <input type="submit" name="submit" value="Refresh" />
+        <input type="submit" value="Search" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" />
+        <input type="submit" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" />
         <input type="submit" name="submit" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" value="PDF" />
     </p>
 

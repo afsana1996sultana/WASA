@@ -6,6 +6,8 @@ using System.Web;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Data;
+using System.Configuration;
 using WASA.Models;
 
 namespace WASA.Controllers
@@ -21,8 +23,19 @@ namespace WASA.Controllers
         }
 
 
+        //[HttpGet]
+        //public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
+        //{
+        //    string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from + "'and'" + to + "'";
+        //    //string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
+        //    SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
+        //    cnn.Open();
+        //    return View();
+        //}
+
+
         [HttpGet]
-        public IActionResult GetWasaReport(DateTime? from,DateTime? to)
+        public IActionResult GetWasaReport(DateTime? from, DateTime? to)
         {
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
@@ -31,10 +44,10 @@ namespace WASA.Controllers
             cnn = new SqlConnection(connetionString);
             try
             {
-                //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
-               // string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
-                //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
-                //cnn.Open();
+                 string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
+                //string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
+                SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
+                cnn.Open();
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand("Select * from tbReports", cnn);
 
