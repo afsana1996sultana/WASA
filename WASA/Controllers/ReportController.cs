@@ -27,7 +27,7 @@ namespace WASA.Controllers
 
 
         [HttpGet]
-        public IActionResult GetWasaReport(DateTime? from, DateTime? to)
+        public IActionResult GetWasaReport()
         {
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;

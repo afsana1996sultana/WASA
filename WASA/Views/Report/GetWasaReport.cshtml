@@ -7,7 +7,6 @@
 
 
 
-
 @{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
 
     <table id="tblPump">
@@ -32,24 +31,16 @@
             </div>
         </thead>
 
-
-        @*<div class="alert-dismissible">
-                <div><a href="@Url.Action("Report", new { id = "PDF" })"> Report in pdf Format</a></div>
-                <div><a href="@Url.Action("Report", new { id = "Excel" })"> Report in Excel Format</a></div>
-                <div><a href="@Url.Action("Report", new { id = "Word" })"> Report in Word Format</a></div>
-                <div><a href="@Url.Action("Report", new { id = "Print" })"> Report in Print Format</a></div>
-
-            </div>*@
         <br />
 
-        <p style="padding-left:670px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+        <p style="padding-left:650px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
 
             <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
             <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
             <input type="submit" value="Search" onclick="searchClick()" />
-            <input type="submit" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" />
-            <input type="button" id="btnExport" value="Export" onclick="Export()" />
-            @*<input type="submit" name="submit" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" value="PDF" />*@
+            <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+            <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+
         </p>
 
         <th>SI</th>
@@ -111,6 +102,9 @@
 </style>
 
 <script>
+   
+ 
+    //});
     // search button er onclick ee action method call mvc
     //$(document).ready(function () { });
         // Initialization
@@ -152,8 +146,7 @@
                 pdfMake.createPdf(docDefinition).download("Table.pdf");
             }
         });
-       }
-       
+    }
 
 
 </script>
