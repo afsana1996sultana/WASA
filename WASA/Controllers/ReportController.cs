@@ -41,7 +41,7 @@ namespace WASA.Controllers
                 //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
                 //cnn.Open();
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR", cnn);
+                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR where ID < 10", cnn);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 
@@ -53,20 +53,20 @@ namespace WASA.Controllers
                     p.Id = Convert.ToInt64(rd[0]);
 
                     p.Date = Convert.ToDateTime(rd[1]).Date;
-                    rportlist.Add(p);
 
-                    p.Production = Convert.ToInt64(rd[2]);
+                    p.Production = Convert.ToDecimal(rd[2]);
 
-                    p.Runtime = Convert.ToInt64(rd[3]);
+                    p.Runtime = Convert.ToDecimal(rd[3]);
 
-                    p.KWH = Convert.ToInt64(rd[4]);
+                    p.KWH = Convert.ToDecimal(rd[4]);
 
-                    p.Flow = Convert.ToInt64(rd[5]);
+                    p.Flow = Convert.ToDecimal(rd[5]);
 
                     p.Stoptime = Convert.ToInt64(rd[6]);
 
-                    p.ProductionCum = Convert.ToInt64(rd[7]);
+                    p.ProductionCum = rd[7].ToString();
 
+                    rportlist.Add(p);
 
                 }
             }

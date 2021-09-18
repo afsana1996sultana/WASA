@@ -6,12 +6,12 @@ namespace WASA.Models
     {
         public long Id { get; set; }
         public DateTime Date { get; set; }
-        public long Production { get; set; }
-        public long Runtime { get; set; }
-        public long KWH { get; set; }
-        public long Flow { get; set; }
-        public long Stoptime { get; set; }
-        public long ProductionCum { get; set; }
+        public decimal Production { get; set; }
+        public decimal Runtime { get; set; }
+        public decimal KWH { get; set; }
+        public decimal Flow { get; set; }
+        public decimal Stoptime { get; set; }
+        public string ProductionCum { get; set; }
 
         
     }
