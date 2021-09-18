@@ -32,7 +32,7 @@ namespace WASA.Controllers
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
             SqlConnection cnn;
-            connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
             cnn = new SqlConnection(connetionString);
             try
             {
@@ -41,7 +41,7 @@ namespace WASA.Controllers
                 //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
                 //cnn.Open();
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from tbReports", cnn);
+                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR", cnn);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 
@@ -50,28 +50,27 @@ namespace WASA.Controllers
                 {
 
                     WasaReportModel p = new WasaReportModel();
-                    p.Serial = Convert.ToInt64(rd[0]);
+                    p.Id = Convert.ToInt64(rd[0]);
 
                     p.Date = Convert.ToDateTime(rd[1]).Date;
                     rportlist.Add(p);
 
-                    p.Flow = Convert.ToInt64(rd[2]);
+                    p.Production = Convert.ToInt64(rd[2]);
 
-                    p.Level = Convert.ToInt64(rd[3]);
+                    p.Runtime = Convert.ToInt64(rd[3]);
 
-                    p.Runtime = Convert.ToInt64(rd[4]);
+                    p.KWH = Convert.ToInt64(rd[4]);
 
-                    p.Stoptime = Convert.ToInt64(rd[5]);
+                    p.Flow = Convert.ToInt64(rd[5]);
 
-                    p.KWH = Convert.ToInt64(rd[6]);
+                    p.Stoptime = Convert.ToInt64(rd[6]);
 
-                    p.Production = Convert.ToInt64(rd[7]);
+                    p.ProductionCum = Convert.ToInt64(rd[7]);
 
-                    p.ProductionCum = Convert.ToInt64(rd[8]);
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
                 //throw ex;
@@ -89,66 +88,63 @@ namespace WASA.Controllers
 
         }
         [HttpGet]
-        public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
-        {
+        //public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
+        //{
 
 
-            List<WasaReportModel> rportlist = new List<WasaReportModel>();
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-            cnn = new SqlConnection(connetionString);
-            try
-            {
-                 string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from.Value.Date+ "'and'" + to.Value.Date + "'";
-                cnn.Open();
-                SqlCommand cmd = new SqlCommand(sqlquary, cnn);
+        //    List<WasaReportModel> rportlist = new List<WasaReportModel>();
+        //    string connetionString;
+        //    SqlConnection cnn;
+        //    connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+        //    cnn = new SqlConnection(connetionString);
+        //    try
+        //    {
+        //         string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from.Value.Date+ "'and'" + to.Value.Date + "'";
+        //        cnn.Open();
+        //        SqlCommand cmd = new SqlCommand(sqlquary, cnn);
 
-                SqlDataReader rd = cmd.ExecuteReader();
+        //        SqlDataReader rd = cmd.ExecuteReader();
 
-                while (rd.Read())
+        //        while (rd.Read())
 
-                {
+        //        {
 
-                    WasaReportModel p = new WasaReportModel();
-                    p.Serial = Convert.ToInt64(rd[0]);
+        //            WasaReportModel p = new WasaReportModel();
+        //            p.Id = Convert.ToInt64(rd[0]);
 
-                    p.Date = Convert.ToDateTime(rd[1]).Date;
-                    rportlist.Add(p);
+        //            p.Date = Convert.ToDateTime(rd[1]).Date;
+        //            rportlist.Add(p);
 
-                    p.Flow = Convert.ToInt64(rd[2]);
+        //            p.Production = Convert.ToInt64(rd[2]);
 
-                    p.Level = Convert.ToInt64(rd[3]);
+        //            p.Runtime = Convert.ToInt64(rd[3]);
 
-                    p.Runtime = Convert.ToInt64(rd[4]);
+        //            p.KWH = Convert.ToInt64(rd[4]);
 
-                    p.Stoptime = Convert.ToInt64(rd[5]);
+        //            p.Flow = Convert.ToInt64(rd[5]);
 
-                    p.KWH = Convert.ToInt64(rd[6]);
+        //            p.Stoptime = Convert.ToInt64(rd[6]);
 
-                    p.Production = Convert.ToInt64(rd[7]);
 
-                    p.ProductionCum = Convert.ToInt64(rd[8]);
-
-                }
-            }
-            catch (Exception ex)
-            {
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
                 
-                //throw ex;
-            }
-            finally
-            {
-                cnn.Close();
-            }
+        //        //throw ex;
+        //    }
+        //    finally
+        //    {
+        //        cnn.Close();
+        //    }
 
-            ViewData["WasaReport"] = rportlist;
+        //    ViewData["WasaReport"] = rportlist;
 
-            return View("GetWasaReport");
+        //    return View("GetWasaReport");
 
 
 
-        }
+        //}
 
 
         [HttpGet]

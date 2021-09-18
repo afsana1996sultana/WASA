@@ -43,35 +43,32 @@
 
         </p>
 
-        <th>SI</th>
+        <th>Id</th>
         <th>Date</th>
-        <th>Flow</th>
-        <th>Level</th>
-        <th>Runtime</th>
-        <th>Stoptime</th>
-        <th>KWH</th>
         <th>Production</th>
+        <th>Runtime</th>
+        <th>KWH</th>
+        <th>Flow</th>
+        <th>Stoptime</th>
         <th>Production Cum</th>
 
         @foreach (WASA.Models.WasaReportModel D in Li)
         {
             <tr>
 
-                <td>@D.Serial</td>
+                <td>@D.Id</td>
 
                 <td>@D.Date</td>
 
-                <td>@D.Flow</td>
-
-                <td>@D.Level</td>
+                <td>@D.Production</td>
 
                 <td>@D.Runtime</td>
 
-                <td>@D.Stoptime</td>
-
                 <td>@D.KWH</td>
 
-                <td>@D.Production</td>
+                <td>@D.Flow</td>
+
+                <td>@D.Stoptime</td>
 
                 <td>@D.ProductionCum</td>
 
