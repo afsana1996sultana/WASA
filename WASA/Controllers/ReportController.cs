@@ -51,11 +51,11 @@ namespace WASA.Controllers
 
                     WasaReportModel p = new WasaReportModel();
                     p.Id = Convert.ToInt64(rd[0]);
-
+                   
                     p.Date = Convert.ToDateTime(rd[1]).Date;
-
+                    
                     p.Production = Convert.ToDecimal(rd[2]);
-
+                   
                     p.Runtime = Convert.ToDecimal(rd[3]);
 
                     p.KWH = Convert.ToDecimal(rd[4]);
@@ -67,6 +67,8 @@ namespace WASA.Controllers
                     p.ProductionCum = rd[7].ToString();
 
                     rportlist.Add(p);
+
+
 
                 }
             }
@@ -112,8 +114,7 @@ namespace WASA.Controllers
         //            WasaReportModel p = new WasaReportModel();
         //            p.Id = Convert.ToInt64(rd[0]);
 
-        //            p.Date = Convert.ToDateTime(rd[1]).Date;
-        //            rportlist.Add(p);
+        //            p.Date = Convert.ToDateTime(rd[1]).Date;           
 
         //            p.Production = Convert.ToInt64(rd[2]);
 
@@ -124,6 +125,7 @@ namespace WASA.Controllers
         //            p.Flow = Convert.ToInt64(rd[5]);
 
         //            p.Stoptime = Convert.ToInt64(rd[6]);
+       //             rportlist.Add(p);
 
 
         //        }
