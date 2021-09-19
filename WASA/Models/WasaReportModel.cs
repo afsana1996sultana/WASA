@@ -4,6 +4,7 @@ namespace WASA.Models
 {
     public class WasaReportModel
     {
+        public long SerialNo { get; set; }
         public long Id { get; set; }
         public DateTime Date { get; set; }
         public decimal Production { get; set; }

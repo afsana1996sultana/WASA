@@ -23,7 +23,7 @@ namespace WASA.Controllers
         }
 
 
-       
+
 
 
         [HttpGet]
@@ -36,35 +36,33 @@ namespace WASA.Controllers
             cnn = new SqlConnection(connetionString);
             try
             {
-                 //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
+                //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from+ "'and'" + to + "'";
                 //string sqlquary = $"SELECT * FROM[demo_databaseDB].[dbo].[tbReports] where Date between '{from}' and '{to}'";
                 //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
                 //cnn.Open();
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR where ID < 10", cnn);
+                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR where ID < 41", cnn);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 
                 while (rd.Read())
-
                 {
 
                     WasaReportModel p = new WasaReportModel();
-                    p.Id = Convert.ToInt64(rd[0]);
-                   
-                    p.Date = Convert.ToDateTime(rd[1]).Date;
-                    
-                    p.Production = Convert.ToDecimal(rd[2]);
-                   
-                    p.Runtime = Convert.ToDecimal(rd[3]);
 
-                    p.KWH = Convert.ToDecimal(rd[4]);
+                    p.Id = Convert.ToInt64(rd["ID"]);
 
-                    p.Flow = Convert.ToDecimal(rd[5]);
+                    p.Date = Convert.ToDateTime(rd["Date"]);
 
-                    p.Stoptime = Convert.ToInt64(rd[6]);
+                    p.Production = Convert.ToDecimal(rd["Production"]);
 
-                    p.ProductionCum = rd[7].ToString();
+                    p.Runtime = Convert.ToDecimal(rd["Runtime"]);
+
+                    p.KWH = Convert.ToDecimal(rd["KWH"]);
+
+                    p.Flow = Convert.ToDecimal(rd["Flow"]);
+
+                    p.Stoptime = rd["Stoptime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Stoptime"]);
 
                     rportlist.Add(p);
 
@@ -72,10 +70,10 @@ namespace WASA.Controllers
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                //throw ex;
+
+                throw ex;
             }
             finally
             {
@@ -86,67 +84,78 @@ namespace WASA.Controllers
 
             return View();
 
-      
+
 
         }
         [HttpGet]
-        //public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
-        //{
+        public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
+        {
 
 
-        //    List<WasaReportModel> rportlist = new List<WasaReportModel>();
-        //    string connetionString;
-        //    SqlConnection cnn;
-        //    connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-        //    cnn = new SqlConnection(connetionString);
-        //    try
-        //    {
-        //         string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from.Value.Date+ "'and'" + to.Value.Date + "'";
-        //        cnn.Open();
-        //        SqlCommand cmd = new SqlCommand(sqlquary, cnn);
+            List<WasaReportModel> rportlist = new List<WasaReportModel>();
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                //string sqlquary = "select * from [dbo].[tbReports] where Date between'" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd") + "'";
+                string sqlquary = "SELECT ID, Date" +
+                                         ", round(Production, 1) as 'Production(M3)'" +
+                                        " ,round(Runtime, 1) as Runtime" +
+                                        " ,round(KWH, 1) as KWH" +
+                                        " ,round(Flow, 1) as Flow" +
+                                        " , round(24 - Runtime, 1) as Downtime" +
+                                        " FROM(SELECT *, ROW_NUMBER() OVER(PARTITION BY CONVERT(DATE,[Date]) " +
+                                        " ORDER BY DATE DESC) AS rn " +
+                                         " FROM AZAMPUR) t WHERE t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd") + "' and Runtime != 0";
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sqlquary, cnn);
 
-        //        SqlDataReader rd = cmd.ExecuteReader();
+                SqlDataReader rd = cmd.ExecuteReader();
 
-        //        while (rd.Read())
+                while (rd.Read())
 
-        //        {
+                {
 
-        //            WasaReportModel p = new WasaReportModel();
-        //            p.Id = Convert.ToInt64(rd[0]);
+                    WasaReportModel p = new WasaReportModel();
 
-        //            p.Date = Convert.ToDateTime(rd[1]).Date;           
+                    p.Id = Convert.ToInt64(rd["ID"]);
 
-        //            p.Production = Convert.ToInt64(rd[2]);
+                    p.Date = Convert.ToDateTime(rd["Date"]);
 
-        //            p.Runtime = Convert.ToInt64(rd[3]);
+                    p.Production = Convert.ToDecimal(rd["Production(M3)"]);
 
-        //            p.KWH = Convert.ToInt64(rd[4]);
+                    p.Runtime = Convert.ToDecimal(rd["Runtime"]);
 
-        //            p.Flow = Convert.ToInt64(rd[5]);
+                    p.KWH = Convert.ToDecimal(rd["KWH"]);
 
-        //            p.Stoptime = Convert.ToInt64(rd[6]);
-       //             rportlist.Add(p);
+                    p.Flow = Convert.ToDecimal(rd["Flow"]);
 
+                    p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-                
-        //        //throw ex;
-        //    }
-        //    finally
-        //    {
-        //        cnn.Close();
-        //    }
-
-        //    ViewData["WasaReport"] = rportlist;
-
-        //    return View("GetWasaReport");
+                    rportlist.Add(p);
 
 
+                }
+            }
+            catch (Exception ex)
+            {
 
-        //}
+                //throw ex;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            ViewData["WasaReport"] = rportlist;
+
+            return View("GetWasaReport");
+
+
+
+        }
 
 
         [HttpGet]
@@ -175,43 +184,43 @@ namespace WASA.Controllers
     }
 }
 
-        //    string reportType = id;
-        //    string mimeType;
-        //    string encoding;
-        //    string fileNameExtension;
+//    string reportType = id;
+//    string mimeType;
+//    string encoding;
+//    string fileNameExtension;
 
-        //    string deviceInfo =
-        //        "<DeviceInfo>" +
-        //        "<OutputFormat>" + id + "</OutputFormat>" +
-        //        "<PageWidth> 8.15in</PageWidth>" +
-        //        "<PageHeight>11in</PageHeight>" +
-        //        "<MarginTop>0.5in</MarginTop>" +
-        //        "<MarginLeft>1in</MarginLeft>" +
-        //        "<MarginRight>1in</MarginRight>" +
-        //        "<MarginBottom>0.5in</MarginBottom>" +
-        //        "</DeviceInfo>";
-        //    WasaReportModel[] wasa;
-        //    string[] streams;
-        //    byte[] renderedBytes;
-        //    renderedBytes = lr.Render(
-        //        formet: reportType,
-        //        deviceInfo,
-        //        out mimeType,
-        //        out encoding,
-        //        out fileNameExtension,
-        //        out streams,
-        //        out wasa);//byte[]
-        //    return File(renderedBytes, mimeType);
+//    string deviceInfo =
+//        "<DeviceInfo>" +
+//        "<OutputFormat>" + id + "</OutputFormat>" +
+//        "<PageWidth> 8.15in</PageWidth>" +
+//        "<PageHeight>11in</PageHeight>" +
+//        "<MarginTop>0.5in</MarginTop>" +
+//        "<MarginLeft>1in</MarginLeft>" +
+//        "<MarginRight>1in</MarginRight>" +
+//        "<MarginBottom>0.5in</MarginBottom>" +
+//        "</DeviceInfo>";
+//    WasaReportModel[] wasa;
+//    string[] streams;
+//    byte[] renderedBytes;
+//    renderedBytes = lr.Render(
+//        formet: reportType,
+//        deviceInfo,
+//        out mimeType,
+//        out encoding,
+//        out fileNameExtension,
+//        out streams,
+//        out wasa);//byte[]
+//    return File(renderedBytes, mimeType);
 
-        //}   
-                
+//}   
 
-        
 
-    
 
-           
-            
 
-           
-      
+
+
+
+
+
+
+
