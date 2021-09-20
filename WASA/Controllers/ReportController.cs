@@ -95,7 +95,7 @@ namespace WASA.Controllers
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
             SqlConnection cnn;
-            connetionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
             cnn = new SqlConnection(connetionString);
             try
             {
@@ -120,7 +120,7 @@ namespace WASA.Controllers
 
                     WasaReportModel p = new WasaReportModel();
 
-                    //p.Id = Convert.ToInt64(rd["ID"]);
+                    p.Id = Convert.ToInt64(rd["ID"]);
 
                     p.Date = Convert.ToDateTime(rd["Date"]);
 
