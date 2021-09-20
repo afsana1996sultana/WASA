@@ -3,8 +3,8 @@
 namespace WASA.Models
 {
     public class WasaReportModel
+
     {
-        public long SerialNo { get; set; }
         public long Id { get; set; }
         public DateTime Date { get; set; }
         public decimal Production { get; set; }
@@ -12,7 +12,6 @@ namespace WASA.Models
         public decimal KWH { get; set; }
         public decimal Flow { get; set; }
         public decimal Stoptime { get; set; }
-        public string ProductionCum { get; set; }
 
         
     }

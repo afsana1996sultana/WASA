@@ -41,7 +41,7 @@ namespace WASA.Controllers
                 //SqlCommand sqlcomm = new SqlCommand(sqlquary, cnn);
                 //cnn.Open();
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR where ID < 41", cnn);
+                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR where ID < 101", cnn);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 
@@ -120,7 +120,7 @@ namespace WASA.Controllers
 
                     WasaReportModel p = new WasaReportModel();
 
-                    p.Id = Convert.ToInt64(rd["ID"]);
+                    //p.Id = Convert.ToInt64(rd["ID"]);
 
                     p.Date = Convert.ToDateTime(rd["Date"]);
 
