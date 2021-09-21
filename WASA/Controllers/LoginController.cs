@@ -17,42 +17,10 @@ namespace WASA.Controllers
 
         [HttpGet]
         public IActionResult Dashboard()
-        {
-            List<UserModel> userModels = new List<UserModel>();
-            string connectionString;
-            SqlConnection cnn;
-            connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-            cnn = new SqlConnection(connectionString);
-            try
-            {
-
-                cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from SystemUsers", cnn);
-                SqlDataReader rd = cmd.ExecuteReader();
-
-                while (rd.Read())
-                {
-
-
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                cnn.Close();
-            }
-
-            ViewData["Dashboard"] = userModels;
-
+        { 
             return View();
 
         }
-
 
         public IActionResult ProcessLogin(UserModel userModel)
         {
@@ -60,7 +28,6 @@ namespace WASA.Controllers
             string connectionString;
             SqlConnection cnn;
            connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
-            //connectionString = @"Server=localhost;Database=Wasa_Dev_Db;Trusted_Connection=True;MultipleActiveResultSets=true";
             cnn = new SqlConnection(connectionString);
             try
             {

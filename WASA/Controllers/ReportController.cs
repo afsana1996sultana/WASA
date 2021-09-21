@@ -252,38 +252,17 @@ namespace WASA.Controllers
             }
 
         }
+
+
+        [HttpGet]
+        public IActionResult GoDashboard()
+        {
+           
+            return RedirectToAction("Dashboard", "Login");
+        }
     }
 }
 
-//    string reportType = id;
-//    string mimeType;
-//    string encoding;
-//    string fileNameExtension;
-
-//    string deviceInfo =
-//        "<DeviceInfo>" +
-//        "<OutputFormat>" + id + "</OutputFormat>" +
-//        "<PageWidth> 8.15in</PageWidth>" +
-//        "<PageHeight>11in</PageHeight>" +
-//        "<MarginTop>0.5in</MarginTop>" +
-//        "<MarginLeft>1in</MarginLeft>" +
-//        "<MarginRight>1in</MarginRight>" +
-//        "<MarginBottom>0.5in</MarginBottom>" +
-//        "</DeviceInfo>";
-//    WasaReportModel[] wasa;
-//    string[] streams;
-//    byte[] renderedBytes;
-//    renderedBytes = lr.Render(
-//        formet: reportType,
-//        deviceInfo,
-//        out mimeType,
-//        out encoding,
-//        out fileNameExtension,
-//        out streams,
-//        out wasa);//byte[]
-//    return File(renderedBytes, mimeType);
-
-//}   
 
 
 

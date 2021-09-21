@@ -33,14 +33,14 @@
 
         <br />
 
-        <p style="padding-left:600px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+        <p style="padding-left:5za00px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
 
             <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
             <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
             <input type="submit" value="Search" onclick="searchClick()" />
             <input type="submit" value="Sum" onclick="sumClick()" />
             <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-            <input type="button" value="Home" onclick="window.location='@Url.Action("ProcessLogin", "Login")'" />
+            <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
             <input type="button" id="btnExport" value="PDF" onclick="Export()" />
 
         </p>
