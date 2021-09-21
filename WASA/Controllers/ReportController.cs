@@ -87,6 +87,7 @@ namespace WASA.Controllers
 
 
         }
+
         [HttpGet]
         public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
         {
@@ -131,6 +132,76 @@ namespace WASA.Controllers
                     p.KWH = Convert.ToDecimal(rd["KWH"]);
 
                     p.Flow = Convert.ToDecimal(rd["Flow"]);
+
+                    p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
+
+                    rportlist.Add(p);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                //throw ex;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            ViewData["WasaReport"] = rportlist;
+
+            return View("GetWasaReport");
+
+
+
+        }
+
+
+        [HttpGet]
+        public IActionResult GetWasaReportSum(DateTime? from, DateTime? to)
+        {
+
+
+            List<WasaReportModel> rportlist = new List<WasaReportModel>();
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                string sqlquary = "SELECT ID, Date" +
+                    "SUM(round(Production, 1)) as Production(cubicmeter)," +
+                    "sum(round(Runtime, 1)) as Runtime(Hr)," +
+                    "sum(round(KWH, 1)) as KWH," +
+                    "avg(round(Flow, 2)) as AVGFlow(Ltr-min)," +
+                    "SUM(round(24 - Runtime, 1)) as DownTime" +
+                    "FROM(SELECT *,ROW_NUMBER() OVER(PARTITION BY CONVERT(DATE,[Date])" +
+                    "ORDER BY DATE DESC)  AS rn" +
+                    "FROM AZAMPUR WHERE Runtime != 0 ) t WHERE t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd");
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sqlquary, cnn);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+
+                {
+
+                    WasaReportModel p = new WasaReportModel();
+
+                    //p.Id = Convert.ToInt64(rd["ID"]);
+
+                    p.Date = Convert.ToDateTime(rd["Date"]);
+
+                    p.Production = Convert.ToDecimal(rd["Production(cubicmeter)"]);
+
+                    p.Runtime = Convert.ToDecimal(rd["Runtime(Hr)"]);
+
+                    p.KWH = Convert.ToDecimal(rd["KWH"]);
+
+                    p.Flow = Convert.ToDecimal(rd["AVGFlow(Ltr-min)"]);
 
                     p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
 
