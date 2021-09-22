@@ -27,7 +27,7 @@ namespace WASA.Controllers
             List<UserModel> userModels = new List<UserModel>();
             string connectionString;
             SqlConnection cnn;
-           connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+            connectionString = @"Server=localhost;Database=demo_databaseDB;Trusted_Connection=True;MultipleActiveResultSets=true";
             cnn = new SqlConnection(connectionString);
             try
             {
