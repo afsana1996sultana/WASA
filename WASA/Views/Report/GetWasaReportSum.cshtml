@@ -5,11 +5,10 @@
 
 }
 
-
-
-@{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
+@{Html.BeginForm("GetWasaReportSum", "Report", FormMethod.Get);
 
     <table id="tblPump">
+
 
         <thead>
             <div style="background-color: cornflowerblue;">
@@ -30,14 +29,13 @@
                 <h2>WASA Report</h2>
             </div>
         </thead>
-
+        <br />
         <br />
 
-        <p style="padding-left:500px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+        <p style="padding-left:600px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
 
             <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
             <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-            <input type="submit" value="Search" onclick="searchClick()" />
             <input type="button" value="Sum" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">
             <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
             <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
@@ -46,12 +44,11 @@
         </p>
 
         <th>Serial No.</th>
-        <th>Date</th>
-        <th>Production</th>
-        <th>Runtime</th>
+        <th>Production(cubicmeter)</th>
+        <th>Runtime(Hr)</th>
         <th>KWH</th>
-        <th>Flow</th>
-        <th>Stoptime</th>
+        <th>AVGFlow(Ltr-min)</th>
+        <th>DownTime</th>
 
         @foreach (WASA.Models.WasaReportModel D in Li)
         {
@@ -77,43 +74,3 @@
 
     </table>
 }
-
-
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
-
-<script>
-
-    function Export() {
-        html2canvas(document.getElementById('tblPump'), {
-            onrendered: function (canvas) {
-                var data = canvas.toDataURL();
-                var docDefinition = {
-                    content: [{
-                        image: data,
-                        width: 500
-                    }]
-                };
-                pdfMake.createPdf(docDefinition).download("Table.pdf");
-            }
-        });
-    }
-
-
-</script>
-
