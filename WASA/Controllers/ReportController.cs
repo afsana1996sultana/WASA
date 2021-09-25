@@ -215,7 +215,7 @@ namespace WASA.Controllers
 
             ViewData["WasaReport"] = rportlist;
 
-            return View("GetWasaReport");
+            return View("GetWasaReportSum");
 
         }
 
@@ -252,6 +252,7 @@ namespace WASA.Controllers
            
             return RedirectToAction("Dashboard", "Login");
         }
+
 
     }
 }

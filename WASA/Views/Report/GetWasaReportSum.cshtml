@@ -5,11 +5,10 @@
 
 }
 
-@{Html.BeginForm("GetWasaReportSum", "Report", FormMethod.Get);
+
+@{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
 
     <table id="tblPump">
-
-
         <thead>
             <div style="background-color: cornflowerblue;">
 
@@ -28,11 +27,41 @@
                 <img src="~/image/logo.png" />
                 <h2>WASA Report</h2>
             </div>
+
+            <style>
+                #customers {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                    #customers td, #customers th {
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                    }
+
+                    #customers tr:nth-child(even) {
+                        background-color: #f2f2f2;
+                    }
+
+                    #customers tr:hover {
+                        background-color: #ddd;
+                    }
+
+                    #customers th {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        text-align: left;
+                        background-color: #04AA6D;
+                        color: white;
+                    }
+            </style>
         </thead>
+
         <br />
         <br />
 
-        <p style="padding-left:600px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+        <p style="padding-left:550px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
 
             <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
             <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
@@ -40,6 +69,7 @@
             <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
             <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
             <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+            <input type="button" value="Logout" onclick="window.close()" />
 
         </p>
 
@@ -72,5 +102,45 @@
             </tr>
         }
 
+
     </table>
 }
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<script>
+
+    function Export() {
+        html2canvas(document.getElementById('tblPump'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    content: [{
+                        image: data,
+                        width: 500
+                    }]
+                };
+                pdfMake.createPdf(docDefinition).download("Table.pdf");
+            }
+        });
+    }
+
+
+</script>
+
