@@ -73,7 +73,7 @@ namespace WASA.Controllers
             }
 
             ViewData["WasaReport"] = rportlist;
-
+            ViewData["WasaReportSum"] = null;
             return View();
 
 
@@ -155,7 +155,7 @@ namespace WASA.Controllers
         public IActionResult GetWasaReportSum(DateTime? from, DateTime? to)
         {
 
-            List<WasaReportModel> rportlist = new List<WasaReportModel>();
+            List<WasaReportModelSum> rportlist = new List<WasaReportModelSum>();
             string connetionString;
             SqlConnection cnn;
             connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
@@ -182,9 +182,9 @@ namespace WASA.Controllers
 
                 {
 
-                    WasaReportModel p = new WasaReportModel();
+                    WasaReportModelSum p = new WasaReportModelSum();
 
-                    //p.Id = Convert.ToInt64(rd["ID"]);
+                    p.Id = Convert.ToInt64(rd["ID"]);
 
                     p.Production = Convert.ToDecimal(rd["Production(cubicmeter)"]);
 
@@ -192,11 +192,10 @@ namespace WASA.Controllers
 
                     p.KWH = Convert.ToDecimal(rd["KWH"]);
 
-                    //p.AVGFlow = Convert.ToDecimal(rd["AVGFlow(Ltr-min)"]);
+                    p.AVGFlow = Convert.ToDecimal(rd["AVGFlow(Ltr-min)"]);
 
-                    //p.Stoptime = Convert.ToDecimal(rd["DownTime"]);
+                    p.DownTime = Convert.ToDecimal(rd["Downtime"]);
 
-                    p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
 
                     rportlist.Add(p);
 
@@ -213,9 +212,10 @@ namespace WASA.Controllers
                 cnn.Close();
             }
 
-            ViewData["WasaReport"] = rportlist;
+            ViewData["WasaReportSum"] = rportlist;
+            ViewData["WasaReport"] = null;
 
-            return View("GetWasaReportSum");
+            return View("GetWasaReport");
 
         }
 

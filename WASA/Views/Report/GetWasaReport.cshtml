@@ -1,13 +1,20 @@
 ﻿<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
-@{List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
-
-}
 
 
+@if (ViewData["WasaReport"] != null)
+{
 
-@{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
+
+    
+        List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
+
+    
+
+
+
+{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
 
     <table id="tblPump">
 
@@ -38,7 +45,8 @@
             <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
             <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
             <input type="submit" value="Search" onclick="searchClick()" />
-            <input type="button" value="Sum" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">
+            <input type="submit" value="Sum" onclick="sumClick()" />
+            @*<input type="button" value="Sum" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">*@
             <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
             <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
             <input type="button" id="btnExport" value="PDF" onclick="Export()" />
@@ -78,7 +86,6 @@
     </table>
 }
 
-
 <style>
     table {
         font-family: arial, sans-serif;
@@ -116,4 +123,154 @@
 
 
 </script>
+
+
+
+@if (ViewData["WasaReportSum"] != null)
+{
+    List<WASA.Models.WasaReportModelSum> sumli = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReportSum"];
+
+    Html.BeginForm("GetWasaReportSum", "Report", FormMethod.Get);
+
+    <table id="tblPump">
+        <thead>
+            <div style="background-color: cornflowerblue;">
+
+                <style>
+                    img {
+                        float: left;
+                        padding-left: 500px;
+                        padding-top: 10px;
+                    }
+
+                    h2 {
+                        padding-bottom: 40px;
+                        padding-top: 68px;
+                    }
+                </style>
+                <img src="~/image/logo.png" />
+                <h2>WASA Report</h2>
+            </div>
+
+            <style>
+                #customers {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                    #customers td, #customers th {
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                    }
+
+                    #customers tr:nth-child(even) {
+                        background-color: #f2f2f2;
+                    }
+
+                    #customers tr:hover {
+                        background-color: #ddd;
+                    }
+
+                    #customers th {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        text-align: left;
+                        background-color: #04AA6D;
+                        color: white;
+                    }
+            </style>
+        </thead>
+
+        <br />
+        <br />
+
+        <p style="padding-left:500px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+
+            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
+            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
+            <input type="submit" value="Search" onclick="searchClick()" />
+            <input type="submit" value="Sum" onclick="sumClick()" />
+            <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+            <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+            <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+            <input type="button" value="Logout" onclick="window.close()" />
+
+        </p>
+
+        <th>Serial No.</th>
+        <th>Production(cubicmeter)</th>
+        <th>Runtime(Hr)</th>
+        <th>KWH</th>
+        <th>AVGFlow(Ltr-min)</th>
+        <th>DownTime</th>
+
+        @foreach (WASA.Models.WasaReportModelSum D in sumli)
+        {
+            <tr>
+
+                <td>@D.Id</td>
+
+                <td>@D.Production</td>
+
+                <td>@D.Runtime</td>
+
+                <td>@D.KWH</td>
+
+                <td>@D.AVGFlow</td>
+
+                <td>@D.DownTime</td>
+
+
+            </tr>
+        }
+
+
+    </table>
+}
+}
+
+
+
+
+
+
+
+@*<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <script>
+
+        function Export() {
+            html2canvas(document.getElementById('tblPump'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
+
+
+    </script>*@
 
