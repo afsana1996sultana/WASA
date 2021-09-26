@@ -9,6 +9,7 @@ namespace WASA.Models
     {
 
         public long Id { get; set; }
+        public DateTime Date { get; set; }
         public decimal Production { get; set; }
         public decimal Runtime { get; set; }
         public decimal KWH { get; set; }
