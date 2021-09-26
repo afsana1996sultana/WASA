@@ -7,236 +7,84 @@
 {
 
 
-    
-        List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
 
-    
+    List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
 
 
+    {
+        Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
 
-{Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
+        <table id="tblPump">
 
-    <table id="tblPump">
+            <thead>
+                <div style="background-color: cornflowerblue;">
 
-        <thead>
-            <div style="background-color: cornflowerblue;">
+                    <style>
+                        img {
+                            float: left;
+                            padding-left: 500px;
+                            padding-top: 10px;
+                        }
 
-                <style>
-                    img {
-                        float: left;
-                        padding-left: 500px;
-                        padding-top: 10px;
-                    }
+                        h2 {
+                            padding-bottom: 40px;
+                            padding-top: 68px;
+                        }
+                    </style>
+                    <img src="~/image/logo.png" />
+                    <h2>WASA Report</h2>
+                </div>
+            </thead>
 
-                    h2 {
-                        padding-bottom: 40px;
-                        padding-top: 68px;
-                    }
-                </style>
-                <img src="~/image/logo.png" />
-                <h2>WASA Report</h2>
-            </div>
-        </thead>
+            <br />
 
-        <br />
+            <p style="padding-left:480px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
 
-        <p style="padding-left:500px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+                <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
+                <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
+                <input type="submit" value="Search" onclick="searchClick()" />
+                <input type="submit" value="Sum" onclick="sumClick()" />
+                <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+                <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+                <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+                <input type="button" value="Logout" onclick="location.href='@Url.Action("GoLogout")'" />
 
-            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
-            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-            <input type="submit" value="Search" onclick="searchClick()" />
-            <input type="submit" value="Sum" onclick="sumClick()" />
-            @*<input type="button" value="Sum" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">*@
-            <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-            <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
-            <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+            </p>
 
-        </p>
+            <th>Serial No.</th>
+            <th>Date</th>
+            <th>Production</th>
+            <th>Runtime</th>
+            <th>KWH</th>
+            <th>Flow</th>
+            <th>Stoptime</th>
 
-        <th>Serial No.</th>
-        <th>Date</th>
-        <th>Production</th>
-        <th>Runtime</th>
-        <th>KWH</th>
-        <th>Flow</th>
-        <th>Stoptime</th>
+            @foreach (WASA.Models.WasaReportModel D in Li)
+            {
+                <tr>
 
-        @foreach (WASA.Models.WasaReportModel D in Li)
-        {
-            <tr>
+                    <td>@D.Id</td>
 
-                <td>@D.Id</td>
+                    <td>@D.Date</td>
 
-                <td>@D.Date</td>
+                    <td>@D.Production</td>
 
-                <td>@D.Production</td>
+                    <td>@D.Runtime</td>
 
-                <td>@D.Runtime</td>
+                    <td>@D.KWH</td>
 
-                <td>@D.KWH</td>
+                    <td>@D.Flow</td>
 
-                <td>@D.Flow</td>
-
-                <td>@D.Stoptime</td>
+                    <td>@D.Stoptime</td>
 
 
-            </tr>
-        }
-
-    </table>
-}
-
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
-
-<script>
-
-    function Export() {
-        html2canvas(document.getElementById('tblPump'), {
-            onrendered: function (canvas) {
-                var data = canvas.toDataURL();
-                var docDefinition = {
-                    content: [{
-                        image: data,
-                        width: 500
-                    }]
-                };
-                pdfMake.createPdf(docDefinition).download("Table.pdf");
+                </tr>
             }
-        });
+
+        </table>
     }
 
-
-</script>
-
-
-
-@if (ViewData["WasaReportSum"] != null)
-{
-    List<WASA.Models.WasaReportModelSum> sumli = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReportSum"];
-
-    Html.BeginForm("GetWasaReportSum", "Report", FormMethod.Get);
-
-    <table id="tblPump">
-        <thead>
-            <div style="background-color: cornflowerblue;">
-
-                <style>
-                    img {
-                        float: left;
-                        padding-left: 500px;
-                        padding-top: 10px;
-                    }
-
-                    h2 {
-                        padding-bottom: 40px;
-                        padding-top: 68px;
-                    }
-                </style>
-                <img src="~/image/logo.png" />
-                <h2>WASA Report</h2>
-            </div>
-
-            <style>
-                #customers {
-                    font-family: Arial, Helvetica, sans-serif;
-                    border-collapse: collapse;
-                    width: 100%;
-                }
-
-                    #customers td, #customers th {
-                        border: 1px solid #ddd;
-                        padding: 8px;
-                    }
-
-                    #customers tr:nth-child(even) {
-                        background-color: #f2f2f2;
-                    }
-
-                    #customers tr:hover {
-                        background-color: #ddd;
-                    }
-
-                    #customers th {
-                        padding-top: 12px;
-                        padding-bottom: 12px;
-                        text-align: left;
-                        background-color: #04AA6D;
-                        color: white;
-                    }
-            </style>
-        </thead>
-
-        <br />
-        <br />
-
-        <p style="padding-left:500px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
-
-            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
-            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-            <input type="submit" value="Search" onclick="searchClick()" />
-            <input type="submit" value="Sum" onclick="sumClick()" />
-            <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-            <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
-            <input type="button" id="btnExport" value="PDF" onclick="Export()" />
-            <input type="button" value="Logout" onclick="window.close()" />
-
-        </p>
-
-        <th>Serial No.</th>
-        <th>Production(cubicmeter)</th>
-        <th>Runtime(Hr)</th>
-        <th>KWH</th>
-        <th>AVGFlow(Ltr-min)</th>
-        <th>DownTime</th>
-
-        @foreach (WASA.Models.WasaReportModelSum D in sumli)
-        {
-            <tr>
-
-                <td>@D.Id</td>
-
-                <td>@D.Production</td>
-
-                <td>@D.Runtime</td>
-
-                <td>@D.KWH</td>
-
-                <td>@D.AVGFlow</td>
-
-                <td>@D.DownTime</td>
-
-
-            </tr>
-        }
-
-
-    </table>
-}
-}
-
-
-
-
-
-
-
-@*<style>
+    <style>
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -272,5 +120,84 @@
         }
 
 
-    </script>*@
+    </script>
+
+
+    @if (ViewData["WasaReportSum"] != null)
+    {
+        List<WASA.Models.WasaReportModelSum> sumli = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReportSum"];
+
+        Html.BeginForm("GetWasaReport", "Report", FormMethod.Get);
+
+        <table id="tblPump">
+
+            <thead>
+                <div style="background-color: cornflowerblue;">
+
+                    <style>
+                        img {
+                            float: left;
+                            padding-left: 500px;
+                            padding-top: 10px;
+                        }
+
+                        h2 {
+                            padding-bottom: 40px;
+                            padding-top: 68px;
+                        }
+                    </style>
+                    <img src="~/image/logo.png" />
+                    <h2>WASA Report</h2>
+                </div>
+            </thead>
+
+            <br />
+
+            <p style="padding-left:480px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+
+                <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
+                <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
+                <input type="submit" value="Search" onclick="searchClick()" />
+                <input type="submit" value="Sum" onclick="sumClick()" />
+                @*<input type="button" value="Sum" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">*@
+                <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+                <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+                <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+                <input type="button" value="Logout" onclick="window.close()" />
+
+
+            </p>
+
+            <th>Serial No.</th>
+            <th>Production(cubicmeter)</th>
+            <th>Runtime(Hr)</th>
+            <th>KWH</th>
+            <th>AVGFlow(Ltr-min)</th>
+            <th>DownTime</th>
+
+            @foreach (WASA.Models.WasaReportModelSum D in sumli)
+            {
+                <tr>
+
+                    <td>@D.Id</td>
+
+                    <td>@D.Production</td>
+
+                    <td>@D.Runtime</td>
+
+                    <td>@D.KWH</td>
+
+                    <td>@D.AVGFlow</td>
+
+                    <td>@D.DownTime</td>
+
+
+                </tr>
+            }
+
+
+        </table>
+    }
+}
+
 

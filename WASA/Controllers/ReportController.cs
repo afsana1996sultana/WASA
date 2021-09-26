@@ -253,6 +253,11 @@ namespace WASA.Controllers
             return RedirectToAction("Dashboard", "Login");
         }
 
+        [HttpGet]
+        public IActionResult GoLogout()
+        {
+            return RedirectToAction("Index");
+        }
 
     }
 }
