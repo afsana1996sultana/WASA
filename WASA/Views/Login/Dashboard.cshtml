@@ -1,5 +1,5 @@
-﻿<html lang="en">
-
+﻿
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,239 +7,359 @@
     <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
     <title>Sidebar template</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+    crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link href="~/css/dashboard.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="page-wrapper chiller-theme toggled">
-                <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-                    <i class="fas fa-bars"></i>
-                </a>
-                <nav id="sidebar" class="sidebar-wrapper">
-                    <div class="sidebar-content">
-                        <div class="sidebar-brand">
-                            <a href="#">DWASA</a>
-                            <div id="close-sidebar">
-                                <i class="fas fa-times"></i>
-                            </div>
-                        </div>
-                        <div class="sidebar-header">
-                            <div class="user-pic">
-                                <img class="img-responsive img-rounded" src="~/image/Afsana.jpg"
-                                     alt="User picture">
-                            </div>
-                            <div class="user-info">
-                                <span class="user-name">
-                                    <strong>Afsana Sultana</strong>
+    <div class="page-wrapper chiller-theme toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a href="#">pro sidebar</a>
+                    <div id="close-sidebar">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+                             alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">
+                            Jhon
+                            <strong>Smith</strong>
+                        </span>
+                        <span class="user-role">Administrator</span>
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- sidebar-header  -->
+                <div class="sidebar-search">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control search-menu" placeholder="Search...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
                                 </span>
-                                <span class="user-role">Administrator</span>
-                                <span class="user-status">
-                                    <i class="fa fa-circle"></i>
-                                    <span>Online</span>
-                                </span>
                             </div>
-                        </div>
-                        <!-- sidebar-header  -->
-                        <div class="sidebar-search">
-                            <div>
-                                <div class="input-group">
-                                    <input type="text" class="form-control search-menu" placeholder="Search...">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-search" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- sidebar-search  -->
-                        <div class="sidebar-menu">
-                            <ul>
-                                <li class="sidebar-dropdown">
-                                    <a href="#">
-                                        <i class="fa fa-tachometer-alt"></i>
-                                        <span>Pump House</span>
-                                        <span class="badge badge-pill badge-warning">New</span>
-                                    </a>
-                                    <div class="sidebar-submenu">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    Home
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Alarm</a>
-                                            </li>
-                                            <li>
-                                               <a href="/Report/GetAll">Report</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="">
-                                    <a href="#">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>Control Panel</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#">
-                                        <i class="far fa-gem"></i>
-                                        <span>Hydrological Data</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#">
-                                        <i class="fa fa-chart-line"></i>
-                                        <span>Electrical Data</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="#">
-                                        <i class="fa fa-globe"></i>
-                                        <span>Pump House Data</span>
-                                    </a>
-                                </li>
-                                <li class="header-menu">
-                                    <span>Extra</span>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>Calendar</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                 </div>
-                 </div>
-                </nav>
-            <!-- sidebar-wrapper  -->
-          <div class="col-md-10 pl-5 pt-2">
-              <div class="container-fluid">
-                  <h1>Dashboard</h1>
-                  <hr />
-                  <div class="row pl-3 pt-2">
-                      <div class="card col-md-10" style="width: 18rem;">
-                          <img class="card-img-top" src="~/image/card7.jpg" alt="Card image cap">
-                          <div class="card-body">
-                          </div>
-                      </div>
-                  </div>
-                  <br />
-                  <br />
+                </div>
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>General</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                                <span class="badge badge-pill badge-warning">New</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            Dashboard 1
+                                            <span class="badge badge-pill badge-success">Pro</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Dashboard 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Dashboard 3</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>E-commerce</span>
+                                <span class="badge badge-pill badge-danger">3</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            Products
 
-                          <div class="w3-container pl-2">
-                              <h5>Countries</h5>
-                              <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-                                  <tr>
-                                      <td>United States</td>
-                                      <td>65%</td>
-                                  </tr>
-                                  <tr>
-                                      <td>UK</td>
-                                      <td>15.7%</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Russia</td>
-                                      <td>5.6%</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Spain</td>
-                                      <td>2.1%</td>
-                                  </tr>
-                                  <tr>
-                                      <td>India</td>
-                                      <td>1.9%</td>
-                                  </tr>
-                                  <tr>
-                                      <td>France</td>
-                                      <td>1.5%</td>
-                                  </tr>
-                              </table><br>
-                              <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
-                          </div>
-                          <hr>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Orders</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Credit cart</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="far fa-gem"></i>
+                                <span>Components</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">General</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Panels</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tables</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Icons</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Forms</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-chart-line"></i>
+                                <span>Charts</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Pie chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Line chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Bar chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Histogram</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-globe"></i>
+                                <span>Maps</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Google maps</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Open street map</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-menu">
+                            <span>Extra</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-book"></i>
+                                <span>Documentation</span>
+                                <span class="badge badge-pill badge-primary">Beta</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-calendar"></i>
+                                <span>Calendar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-folder"></i>
+                                <span>Examples</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+            <div class="sidebar-footer">
+                <a href="#">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-warning notification">3</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification">7</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <span class="badge-sonar"></span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+        </nav>
 
-                          <div class="w3-container w3-dark-grey w3-padding-32">
-                              <div class="w3-row">
-                                  <div class="w3-container w3-third">
-                                      <h5 class="w3-bottombar w3-border-green">Demographic</h5>
-                                      <p>Language</p>
-                                      <p>Country</p>
-                                      <p>City</p>
-                                  </div>
-                                  <div class="w3-container w3-third">
-                                      <h5 class="w3-bottombar w3-border-red">System</h5>
-                                      <p>Browser</p>
-                                      <p>OS</p>
-                                      <p>More</p>
-                                  </div>
-                                  <div class="w3-container w3-third">
-                                      <h5 class="w3-bottombar w3-border-orange">Target</h5>
-                                      <p>Users</p>
-                                      <p>Active</p>
-                                      <p>Geo</p>
-                                      <p>Interests</p>
-                                  </div>
-                              </div>
-                          </div>
-
-                          <footer class="w3-container w3-padding-16 w3-light-grey">
-                              
-                          </footer>
-                      </div>
-
-                  </div>
-
-
-              </div>
+        <!-- sidebar-wrapper  -->
+        <main class="page-content">
+            <div class="container-fluid">
+                <footer class="text-center">
+                    <div class="mb-2">
+                        <small>
+                            © 2020 made with <i class="fa fa-heart" style="color:red"></i> by - <a target="_blank" rel="noopener noreferrer" href="https://azouaoui.netlify.com">
+                                Mohamed Azouaoui
+                            </a>
+                        </small>
+                    </div>
+                    <div>
+                        <a href="https://github.com/azouaoui-med" target="_blank">
+                            <img alt="GitHub followers" src="https://img.shields.io/github/followers/azouaoui-med?label=github&style=social" />
+                        </a>
+                        <a href="https://twitter.com/azouaoui_med" target="_blank">
+                            <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/azouaoui_med?label=twitter&style=social" />
+                        </a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+        <!-- page-content" -->
+    </div>
     <!-- page-wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(".sidebar-dropdown > a").click(function () {
-            $(".sidebar-submenu").slideUp(200);
-            if (
-                $(this)
-                    .parent()
-                    .hasClass("active")
-            ) {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this)
-                    .parent()
-                    .removeClass("active");
-            } else {
-                $(".sidebar-dropdown").removeClass("active");
-                $(this)
-                    .next(".sidebar-submenu")
-                    .slideDown(200);
-                $(this)
-                    .parent()
-                    .addClass("active");
-            }
-        });
-
-        $("#close-sidebar").click(function () {
-            $(".page-wrapper").removeClass("toggled");
-        });
-        $("#show-sidebar").click(function () {
-            $(".page-wrapper").addClass("toggled");
-        });
-
-    </script>
-
 </body>
-
 </html>
+@*sidebar-wrapper*@
+<!--<div class="col-md-10 pl-5 pt-2">
+    <div class="container-fluid">
+        <h1>dashboard</h1>
+        <hr />
+        <div class="row pl-3 pt-2">
+            <div class="card col-md-10" style="width: 18rem;">
+                <img class="card-img-top" src="~/image/card7.jpg" alt="card image cap">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />-->
+
+<div class="w3-container pl-2">
+    <h5>countries</h5>
+    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+        <tr>
+            <td>united states</td>
+            <td>65%</td>
+        </tr>
+        <tr>
+            <td>uk</td>
+            <td>15.7%</td>
+        </tr>
+        <tr>
+            <td>russia</td>
+            <td>5.6%</td>
+        </tr>
+        <tr>
+            <td>spain</td>
+            <td>2.1%</td>
+        </tr>
+        <tr>
+            <td>india</td>
+            <td>1.9%</td>
+        </tr>
+        <tr>
+            <td>france</td>
+            <td>1.5%</td>
+        </tr>
+    </table><br>
+    <button class="w3-button w3-dark-grey">more countries  <i class="fa fa-arrow-right"></i></button>
+</div>
+<hr>
+
+<div class="w3-container w3-dark-grey w3-padding-32">
+    <div class="w3-row">
+        <div class="w3-container w3-third">
+            <h5 class="w3-bottombar w3-border-green">demographic</h5>
+            <p>language</p>
+            <p>country</p>
+            <p>city</p>
+        </div>
+        <div class="w3-container w3-third">
+            <h5 class="w3-bottombar w3-border-red">system</h5>
+            <p>browser</p>
+            <p>os</p>
+            <p>more</p>
+        </div>
+        <div class="w3-container w3-third">
+            <h5 class="w3-bottombar w3-border-orange">target</h5>
+            <p>users</p>
+            <p>active</p>
+            <p>geo</p>
+            <p>interests</p>
+        </div>
+    </div>
+</div>
+<footer class="w3-container w3-padding-16 w3-light-grey">
+</footer>
+            </div>
+        </div>
+    </div>
+@*page-wrapper*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-apnbgh9b+y1qktv3rn7w3mgpxhu9k/scqsap7huibx39j7fakfpskvxusvfa0b4q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-jzr6spejh4u02d8jot6vlehfe/jqgirrsqqxsffwpi1mquvdayjuar5+76pvcmyl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(".sidebar-dropdown > a").click(function () {
+        $(".sidebar-submenu").slideup(200);
+        if (
+            $(this)
+                .parent()
+                .hasclass("active")
+        ) {
+            $(".sidebar-dropdown").removeclass("active");
+            $(this)
+                .parent()
+                .removeclass("active");
+        } else {
+            $(".sidebar-dropdown").removeclass("active");
+            $(this)
+                .next(".sidebar-submenu")
+                .slidedown(200);
+            $(this)
+                .parent()
+                .addclass("active");
+        }
+    });
+
+    $("#close-sidebar").click(function () {
+        $(".page-wrapper").removeclass("toggled");
+    });
+    $("#show-sidebar").click(function () {
+        $(".page-wrapper").addclass("toggled");
+    });
+
+</script>
+</body>
+</html>
+

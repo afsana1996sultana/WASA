@@ -37,19 +37,24 @@
             </thead>
 
             <br />
+            <br />
 
-            <p style="padding-left:400px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
+            <p style="padding-left:150px; background-color:cornflowerblue; margin-bottom:20px; padding-top:12px; padding-bottom:12px;">
 
                 <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
                 <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-                <input type="submit" value="Search" />
-                <input type="button" value="Sum" onclick="sumClick()" />
-                <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-                <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
-                <input type="button" id="btnExport" value="PDF" onclick="Export()" />
-                <input type="button" value="Logout" onclick="location.href='@Url.Action("GoLogout")'" />
+                <input type="submit" style="margin-left:7px;" value="Search" />
+                @*<input type="button" value="Sum" onclick="sumClick()" />*@
+                <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+                <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">
+                <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+                <input type="button" style="margin-left:7px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+                <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
+                <input type="button" style="margin-left:7px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
+
 
             </p>
+            <br />
 
             <th>Serial No.</th>
             <th>Date</th>
@@ -124,7 +129,7 @@
 
             var fromDate = document.getElementById('fromDate').value;
             var toDate = document.getElementById('toDate').value;
-            console.log(toDate, 'Tanvir');
+             console.log(toDate, 'Tanvir');
             $.get("/Report/GetWasaReportSum", { from: fromDate, to: toDate}, function (data) {
                 alert(data);
             });
@@ -174,9 +179,6 @@
                 <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
                 <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
                 <input type="button" id="btnExport" value="PDF" onclick="Export()" />
-                <input type="button" value="Logout" onclick="window.close()" />
-
-
             </p>
 
             <th>Serial No.</th>
@@ -192,7 +194,7 @@
 
                     <td>@D.Id</td>
 
-                    <td>@D.Date</td>
+                    @*<td>@D.Date</td>*@
 
                     <td>@D.Production</td>
 
