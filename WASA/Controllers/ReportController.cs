@@ -229,7 +229,7 @@ namespace WASA.Controllers
             //ViewData["WasaReportSum"] = rportlist;
             //ViewData["WasaReport"] = null;
 
-            return View(/*"GetWasaReport"*/);
+            return View("GetWasaReportSum");
 
         }
 
