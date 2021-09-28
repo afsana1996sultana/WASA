@@ -2,7 +2,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 
-   List<WASA.Models.WasaReportModelSum> Sumli = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReport"];
+   @{List<WASA.Models.WasaReportModelSum> Sumli = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReport"];}
 
     {
         @Html.BeginForm("GetWasaReportSum", "Report", FormMethod.Get);
@@ -87,9 +87,6 @@
         {
             <tr>
 
-                <td>@D.Id</td>
-
-                <td>@D.Date</td>
 
                 <td>@D.Production</td>
 

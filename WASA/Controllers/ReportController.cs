@@ -81,6 +81,65 @@ namespace WASA.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetWasaReportTotal()
+        {
+            List<WasaReportModel> rportlist = new List<WasaReportModel>();
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand("Select * from AZAMPUR where ID < 101", cnn);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    WasaReportModel p = new WasaReportModel();
+
+                    p.Id = Convert.ToInt64(rd["ID"]);
+
+                    p.Date = Convert.ToDateTime(rd["Date"]);
+
+                    p.Production = Convert.ToDecimal(rd["Production"]);
+
+                    p.Runtime = Convert.ToDecimal(rd["Runtime"]);
+
+                    p.KWH = Convert.ToDecimal(rd["KWH"]);
+
+                    p.Flow = Convert.ToDecimal(rd["Flow"]);
+
+                    p.Stoptime = rd["Stoptime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Stoptime"]);
+
+                    rportlist.Add(p);
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            ViewData["WasaReport"] = rportlist;
+         
+            return View();
+
+
+
+        }
+
+
+        [HttpGet]
         public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
         {
 
@@ -151,10 +210,80 @@ namespace WASA.Controllers
 
 
         [HttpGet]
+        public IActionResult GetWasaReportFilterTotal(DateTime? from, DateTime? to)
+        {
+
+
+            List<WasaReportModelSum> rportlist = new List<WasaReportModelSum>();
+            string connetionString;
+            SqlConnection cnn;
+            connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
+            cnn = new SqlConnection(connetionString);
+            try
+            {
+                string sqlquary = " select sum(round(production,1))as production,"
+                                  + " sum(round(runtime, 1)) as runtime,"
+                                  + "sum(round(kwh, 1)) as kwh,"
+                                  + "avg(round(flow, 2)) as avgflow,"
+                                  + "sum(round(24 - runtime, 1)) as downtime"
+                               + " from("
+                                   + "select *,"
+                                      + "row_number() over(partition by convert(date,[date])  order by date desc)  as rn"
+                                    + " from azampur where runtime != 0"
+                                  + ") t where t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd") + "'";
+                cnn.Open();
+                SqlCommand cmd = new SqlCommand(sqlquary, cnn);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+
+                {
+
+                    WasaReportModelSum p = new WasaReportModelSum();
+
+                    p.Production = Convert.ToDecimal(rd["Production"]);
+
+                    p.Runtime = Convert.ToDecimal(rd["Runtime"]);
+
+                    p.KWH = Convert.ToDecimal(rd["KWH"]);
+
+                    p.AVGFlow = Convert.ToDecimal(rd["AVGFlow"]);
+
+                    p.DownTime = Convert.ToDecimal(rd["DownTime"]);
+
+                    //p.DownTime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
+
+
+                    rportlist.Add(p);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                //throw ex;
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            ViewData["WasaReport"] = rportlist;
+
+            return View("GetWasaReport");
+
+
+
+        }
+
+
+        [HttpGet]
         public IActionResult GetWasaReportSum(DateTime? from, DateTime? to)
         {
 
-            List<WasaReportModelSum> rportlist = new List<WasaReportModelSum>();
+            List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
             SqlConnection cnn;
             connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
@@ -193,7 +322,7 @@ namespace WASA.Controllers
                 while (rd.Read())
 
                 {
-                    WasaReportModelSum p = new WasaReportModelSum();
+                    WasaReportModel p = new WasaReportModel();
 
                       p.Id = Convert.ToInt64(rd["ID"]);
 
@@ -205,11 +334,9 @@ namespace WASA.Controllers
 
                       p.KWH = Convert.ToDecimal(rd["KWH"]);
 
-                      p.AVGFlow = Convert.ToDecimal(rd["AVGFlow"]);
+                      p.Flow = Convert.ToDecimal(rd["AVGFlow"]);
 
-                      p.DownTime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
-
-                    //p.DownTime = Convert.ToDecimal(rd["Downtime"]);
+                      p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
 
                      rportlist.Add(p);
                  }
