@@ -2,17 +2,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 
+    @if (ViewData["WasaReport"] != null)
 
-@if (ViewData["WasaReport"] != null)
-{
-
+  {
 
 
     List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
 
 
     {
-        Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
+        @Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
+        }
 
         <table id="tblPump">
 
@@ -125,27 +125,26 @@
         }
 
 
-        function sumClick() {
+        //function sumClick() {
 
-            var fromDate = document.getElementById('fromDate').value;
-            var toDate = document.getElementById('toDate').value;
-             console.log(toDate, 'Tanvir');
-            $.get("/Report/GetWasaReportSum", { from: fromDate, to: toDate}, function (data) {
-                alert(data);
-            });
-        }
-
+        //    var fromDate = document.getElementById('fromDate').value;
+        //    var toDate = document.getElementById('toDate').value;
+        //     console.log(toDate, 'Tanvir');
+        //    $.get("/Report/GetWasaReportSum", { from: fromDate, to: toDate}, function (data) {
+        //        alert(data);
+        //    });
+        //}
 
     </script>
 
 
-    @if (ViewData["WasaReportSum"] != null)
+    @*@if (viewdata["wasareportsum"] != null)
     {
-        List<WASA.Models.WasaReportModelSum> sumli = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReportSum"];
+        list<wasa.models.wasareportmodelsum> sumli = (list<wasa.models.wasareportmodelsum>)viewdata["wasareportsum"];
 
-        Html.BeginForm("GetWasaReport", "Report", FormMethod.Get);
+        html.beginform("getwasareport", "report", formmethod.get);
 
-        <table id="tblPump">
+        <table id="tblpump">
 
             <thead>
                 <div style="background-color: cornflowerblue;">
@@ -163,7 +162,7 @@
                         }
                     </style>
                     <img src="~/image/logo.png" />
-                    <h2>WASA Report</h2>
+                    <h2>wasa report</h2>
                 </div>
             </thead>
 
@@ -171,47 +170,47 @@
 
             <p style="padding-left:480px; background-color:cornflowerblue; margin-bottom:20px; padding-top:5px; padding-bottom:5px;">
 
-                <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
-                <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-                <input type="button" value="Search" />
-                <input type="button" value="Sum" onclick="sumClick()" />
-                @*<input type="button" value="Sum" onclick="location.href='@Url.Action("GetWasaReportSum", "Report")'">*@
-                <input type="button" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-                <input type="button" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
-                <input type="button" id="btnExport" value="PDF" onclick="Export()" />
+                <span style="font-size:larger;"> from : </span><input type="date" name="from" id="fromdate" value="yyyy-mm-dd">
+                <span style="font-size:larger;"> to : </span><input type="date" name="to" id="todate" value="yyyy-mm-dd">
+                <input type="button" value="search" />
+                <input type="button" value="sum" onclick="sumclick()" />
+                <input type="button" value="sum" onclick="location.href='@url.action("getwasareportsum", "report")'">
+                <input type="button" value="refresh" onclick="location.href='@url.action("getwasareport", "report")'">
+                <input type="button" value="home" onclick="window.location='@url.action("godashboard", "report")'" />
+                <input type="button" id="btnexport" value="pdf" onclick="export()" />
             </p>
 
-            <th>Serial No.</th>
-            <th>Production(cubicmeter)</th>
-            <th>Runtime(Hr)</th>
-            <th>KWH</th>
-            <th>AVGFlow(Ltr-min)</th>
-            <th>DownTime</th>
+            <th>serial no.</th>
+            <th>production(cubicmeter)</th>
+            <th>runtime(hr)</th>
+            <th>kwh</th>
+            <th>avgflow(ltr-min)</th>
+            <th>downtime</th>
 
-            @foreach (WASA.Models.WasaReportModelSum D in sumli)
+            @foreach (wasa.models.wasareportmodelsum d in sumli)
             {
                 <tr>
 
-                    <td>@D.Id</td>
+                    <td>@d.id</td>
 
-                    @*<td>@D.Date</td>*@
+                    <td>@d.date</td>
 
-                    <td>@D.Production</td>
+                    <td>@d.production</td>
 
-                    <td>@D.Runtime</td>
+                    <td>@d.runtime</td>
 
-                    <td>@D.KWH</td>
+                    <td>@d.kwh</td>
 
-                    <td>@D.AVGFlow</td>
+                    <td>@d.avgflow</td>
 
-                    <td>@D.DownTime</td>
+                    <td>@d.downtime</td>
 
 
                 </tr>
             }
 
 
-        </table>
+        </table>*@
     }
 }
 
