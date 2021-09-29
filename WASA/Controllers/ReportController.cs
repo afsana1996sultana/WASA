@@ -126,8 +126,9 @@ namespace WASA.Controllers
                 cnn.Close();
             }
 
-            ViewData["WasaReport"] = rportlist;
-         
+            ViewData["WasaReportTotal"] = rportlist;
+            ViewData["WasaReportTotalFilter"] = null;
+
             return View();
 
         }
@@ -260,96 +261,16 @@ namespace WASA.Controllers
                 cnn.Close();
             }
 
-            ViewData["WasaReport"] = rportlist;
+            ViewData["WasaReportTotalFilter"] = rportlist;
+            ViewData["WasaReportTotal"] = null;
 
-            return View("GetWasaReport");
+            return View("GetWasaReportTotal");
 
 
 
         }
 
-
-        [HttpGet]
-        //public IActionResult GetWasaReportSum(DateTime? from, DateTime? to)
-        //{
-
-        //    List<WasaReportModel> rportlist = new List<WasaReportModel>();
-        //    string connetionString;
-        //    SqlConnection cnn;
-        //    connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
-        //    cnn = new SqlConnection(connetionString);
-        //    try
-        //    {
-
-        //        //    //string sqlquary = "SELECT ID, sum" +
-        //        //    //                  ", round(Production, 1)) as 'Production(cubicmeter)'" +
-        //        //    //                  ",sum(round(Runtime, 1)) as Runtime(Hr)" +
-        //        //    //                  ",sum(round(KWH, 1)) as KWH" +
-        //        //    //                  ",avg(round(Flow, 2)) as AVGFlow(Ltr-min)" +
-        //        //    //                  ",SUM(round(24 - Runtime, 1)) as DownTime" +
-        //        //    //                  " FROM(SELECT *, ROW_NUMBER() OVER(PARTITION BY CONVERT(DATE,[Date])" +  
-        //        //    //                  " ORDER BY DATE DESC)  AS rn " +
-        //        //    //                  " FROM[AZAMPUR] WHERE Runtime != 0) t WHERE t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd")+"'";
-
-
-
-        //        string sqlquary = " select sum(round(production,1))as production,"
-        //                          + " sum(round(runtime, 1)) as runtime,"
-        //                          + "sum(round(kwh, 1)) as kwh,"
-        //                          + "avg(round(flow, 2)) as avgflow,"
-        //                          + "sum(round(24 - runtime, 1)) as downtime"
-        //                       + " from("
-        //                           + "select *,"
-        //                              + "row_number() over(partition by convert(date,[date])  order by date desc)  as rn"
-        //                            + " from azampur where runtime != 0"
-        //                          + ") t where t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-mm-dd") + "'and'" + to.Value.Date.ToString("yyyy-mm-dd") + "'";
-               
-        //        cnn.Open();
-        //        SqlCommand cmd = new SqlCommand(sqlquary, cnn);
-
-        //        SqlDataReader rd = cmd.ExecuteReader();
-
-        //        while (rd.Read())
-
-        //        {
-        //            WasaReportModel p = new WasaReportModel();
-
-        //              p.Id = Convert.ToInt64(rd["ID"]);
-
-        //              p.Date = Convert.ToDateTime(rd["Date"]);
-
-        //              p.Production = Convert.ToDecimal(rd["Production"]);
-
-        //              p.Runtime = Convert.ToDecimal(rd["Runtime"]);
-
-        //              p.KWH = Convert.ToDecimal(rd["KWH"]);
-
-        //              p.Flow = Convert.ToDecimal(rd["AVGFlow"]);
-
-        //              p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
-
-        //             rportlist.Add(p);
-        //         }
-        //      }
-        //     catch (Exception ex)
-        //     {
-
-        //        //throw ex;
-        //      }
-        //     finally
-        //     {
-        //         cnn.Close();
-        //      }
-
-        //    //ViewData["WasaReportSum"] = rportlist;
-        //    //ViewData["WasaReport"] = null;
- 
-        //    ViewData["WasaReport"] = rportlist;
-        //    return View("GetWasaReportSum");
-
-        //}
-
-
+                 
 
         [HttpGet]
         public ActionResult PrintInvoice()
@@ -375,8 +296,6 @@ namespace WASA.Controllers
 
         }
 
-
-
         [HttpGet]
         public IActionResult GoDashboard()
         {
@@ -384,13 +303,10 @@ namespace WASA.Controllers
             return RedirectToAction("Dashboard", "Login");
         }
 
-
-
-
         [HttpGet]
         public IActionResult GoLogout()
         {
-            return RedirectToAction("Index", "Index");
+            return RedirectToAction("Index", "Login");
         }
 
     }

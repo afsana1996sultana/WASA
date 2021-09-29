@@ -5,12 +5,10 @@
 @if (ViewData["WasaReport"] != null)
 
 {
-    {
-        @Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
-    }
 
     List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"];
 
+    Html.BeginForm("GetWasaReportFilter", "Report", FormMethod.Get);
 
     <table id="tblPump">
 
@@ -49,7 +47,6 @@
             <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
             <input type="button" style="margin-left:7px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
 
-
         </p>
         <br />
 
@@ -78,7 +75,6 @@
                 <td>@D.Flow</td>
 
                 <td>@D.Stoptime</td>
-
 
             </tr>
         }

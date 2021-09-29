@@ -2,88 +2,168 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 
-
-
-@{List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"]; }
+@if (ViewData["WasaReportTotal"] != null)
 
 {
-@Html.BeginForm("GetWasaReportFilterTotal", "Report", FormMethod.Get);
-    }
 
 
-<table id="tblPump">
-
-    <thead>
-        <div style="background-color: cornflowerblue;">
-
-            <style>
-                img {
-                    float: left;
-                    padding-left: 500px;
-                    padding-top: 10px;
-                }
-
-                h2 {
-                    padding-bottom: 40px;
-                    padding-top: 68px;
-                }
-            </style>
-            <img src="~/image/logo.png" />
-            <h2>WASA Report</h2>
-        </div>
-    </thead>
-
-    <br />
-    <br />
-
-    <p style="padding-left:150px; background-color:cornflowerblue; margin-bottom:20px; padding-top:12px; padding-bottom:12px;">
-
-        <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
-        <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-        <input type="submit" style="margin-left:7px;" value="Search" />
-        <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-        <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotal", "Report")'">
-        <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
-        <input type="button" style="margin-left:7px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
-        <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
-        <input type="button" style="margin-left:7px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
+    List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReportTotal"];
 
 
-    </p>
-    <br />
 
-    <th>Serial No.</th>
-    <th>Date</th>
-    <th>Production</th>
-    <th>Runtime</th>
-    <th>KWH</th>
-    <th>Flow</th>
-    <th>Stoptime</th>
+    Html.BeginForm("GetWasaReportFilterTotal", "Report", FormMethod.Get);
+    <table id="tblPump">
 
-    @foreach (WASA.Models.WasaReportModel D in Li)
-    {
-        <tr>
+        <thead>
+            <div style="background-color: cornflowerblue;">
 
-            <td>@D.Id</td>
+                <style>
+                    img {
+                        float: left;
+                        padding-left: 500px;
+                        padding-top: 10px;
+                    }
 
-            <td>@D.Date</td>
+                    h2 {
+                        padding-bottom: 40px;
+                        padding-top: 68px;
+                    }
+                </style>
+                <img src="~/image/logo.png" />
+                <h2>WASA Report</h2>
+            </div>
+        </thead>
 
-            <td>@D.Production</td>
+        <br />
+        <br />
 
-            <td>@D.Runtime</td>
+        <p style="padding-left:150px; background-color:cornflowerblue; margin-bottom:20px; padding-top:12px; padding-bottom:12px;">
 
-            <td>@D.KWH</td>
+            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
+            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
+            <input type="submit" style="margin-left:7px;" value="Search" />
+            <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotal", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+            <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
+            <input type="button" style="margin-left:7px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
 
-            <td>@D.Flow</td>
 
-            <td>@D.Stoptime</td>
+        </p>
+        <br />
+
+        <th>Serial No.</th>
+        <th>Date</th>
+        <th>Production</th>
+        <th>Runtime</th>
+        <th>KWH</th>
+        <th>Flow</th>
+        <th>Stoptime</th>
+
+        @foreach (WASA.Models.WasaReportModel D in Li)
+        {
+            <tr>
+
+                <td>@D.Id</td>
+
+                <td>@D.Date</td>
+
+                <td>@D.Production</td>
+
+                <td>@D.Runtime</td>
+
+                <td>@D.KWH</td>
+
+                <td>@D.Flow</td>
+
+                <td>@D.Stoptime</td>
 
 
-        </tr>
-    }
+            </tr>
+        }
 
-</table>
 
+    </table>
+
+
+}
+ 
+
+@if (ViewData["WasaReportTotalFilter"] != null)
+
+{
+
+    List<WASA.Models.WasaReportModelSum> sumLi = (List<WASA.Models.WasaReportModelSum>)ViewData["WasaReportTotalFilter"];
+
+
+    Html.BeginForm("GetWasaReportFilterTotal", "Report", FormMethod.Get);
+    <table id="tblPump">
+
+        <thead>
+            <div style="background-color: cornflowerblue;">
+
+                <style>
+                    img {
+                        float: left;
+                        padding-left: 500px;
+                        padding-top: 10px;
+                    }
+
+                    h2 {
+                        padding-bottom: 40px;
+                        padding-top: 68px;
+                    }
+                </style>
+                <img src="~/image/logo.png" />
+                <h2>WASA Report</h2>
+            </div>
+        </thead>
+
+        <br />
+        <br />
+
+        <p style="padding-left:150px; background-color:cornflowerblue; margin-bottom:20px; padding-top:12px; padding-bottom:12px;">
+
+            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
+            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
+            <input type="submit" style="margin-left:7px;" value="Search" />
+            <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotal", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+            <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
+            <input type="button" style="margin-left:7px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
+
+        </p>
+        <br />
+        
+        <th>Production</th>
+        <th>Runtime</th>
+        <th>KWH</th>
+        <th>AVGFlow</th>
+        <th>DownTime</th>
+
+        @foreach (WASA.Models.WasaReportModelSum D in sumLi)
+        {
+            <tr> 
+
+                <td>@D.Production</td>
+
+                <td>@D.Runtime</td>
+
+                <td>@D.KWH</td>
+
+                <td>@D.AVGFlow</td>
+
+                <td>@D.DownTime</td>
+            </tr>
+        }
+
+    </table>
+
+}
+ 
 
 <style>
     table {
