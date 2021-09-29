@@ -7,7 +7,7 @@
 @{List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReport"]; }
 
 {
-@Html.BeginForm("GetWasaReportSum", "Report", FormMethod.Get);
+@Html.BeginForm("GetWasaReportFilterTotal", "Report", FormMethod.Get);
     }
 
 
@@ -41,7 +41,6 @@
         <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
         <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
         <input type="submit" style="margin-left:7px;" value="Search" />
-        @*<input type="button" value="Sum" onclick="sumClick()" />*@
         <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
         <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotal", "Report")'">
         <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">
@@ -120,16 +119,5 @@
             }
         });
     }
-
-
-        //function sumClick() {
-
-        //    var fromDate = document.getElementById('fromDate').value;
-        //    var toDate = document.getElementById('toDate').value;
-        //     console.log(toDate, 'Tanvir');
-        //    $.get("/Report/GetWasaReportSum", { from: fromDate, to: toDate}, function (data) {
-        //        alert(data);
-        //    });
-        //}
 
 </script>

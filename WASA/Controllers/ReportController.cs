@@ -22,6 +22,7 @@ namespace WASA.Controllers
             return View();
         }
 
+
         [HttpGet]
         public IActionResult GetWasaReport()
         {
@@ -58,8 +59,6 @@ namespace WASA.Controllers
 
                     rportlist.Add(p);
 
-
-
                 }
             }
             catch (Exception ex)
@@ -73,12 +72,11 @@ namespace WASA.Controllers
             }
 
             ViewData["WasaReport"] = rportlist;
-            //ViewData["WasaReportSum"] = null;
             return View();
 
-
-
         }
+
+
 
         [HttpGet]
         public IActionResult GetWasaReportTotal()
@@ -116,8 +114,6 @@ namespace WASA.Controllers
 
                     rportlist.Add(p);
 
-
-
                 }
             }
             catch (Exception ex)
@@ -134,15 +130,13 @@ namespace WASA.Controllers
          
             return View();
 
-
-
         }
+
 
 
         [HttpGet]
         public IActionResult GetWasaReportFilter(DateTime? from, DateTime? to)
         {
-
 
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
             string connetionString;
@@ -160,6 +154,7 @@ namespace WASA.Controllers
                                         " FROM(SELECT *, ROW_NUMBER() OVER(PARTITION BY CONVERT(DATE,[Date]) " +
                                         " ORDER BY DATE DESC) AS rn " +
                                          " FROM AZAMPUR) t WHERE t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd") + "' and Runtime != 0";
+               
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand(sqlquary, cnn);
 
@@ -204,8 +199,6 @@ namespace WASA.Controllers
 
             return View("GetWasaReport");
 
-
-
         }
 
 
@@ -231,6 +224,7 @@ namespace WASA.Controllers
                                       + "row_number() over(partition by convert(date,[date])  order by date desc)  as rn"
                                     + " from azampur where runtime != 0"
                                   + ") t where t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd") + "'";
+               
                 cnn.Open();
                 SqlCommand cmd = new SqlCommand(sqlquary, cnn);
 
@@ -252,11 +246,7 @@ namespace WASA.Controllers
 
                     p.DownTime = Convert.ToDecimal(rd["DownTime"]);
 
-                    //p.DownTime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
-
-
                     rportlist.Add(p);
-
 
                 }
             }
@@ -280,84 +270,84 @@ namespace WASA.Controllers
 
 
         [HttpGet]
-        public IActionResult GetWasaReportSum(DateTime? from, DateTime? to)
-        {
+        //public IActionResult GetWasaReportSum(DateTime? from, DateTime? to)
+        //{
 
-            List<WasaReportModel> rportlist = new List<WasaReportModel>();
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
-            cnn = new SqlConnection(connetionString);
-            try
-            {
+        //    List<WasaReportModel> rportlist = new List<WasaReportModel>();
+        //    string connetionString;
+        //    SqlConnection cnn;
+        //    connetionString = @"Server=localhost;Database=MZ-9;Trusted_Connection=True;MultipleActiveResultSets=true";
+        //    cnn = new SqlConnection(connetionString);
+        //    try
+        //    {
 
-                //    //string sqlquary = "SELECT ID, sum" +
-                //    //                  ", round(Production, 1)) as 'Production(cubicmeter)'" +
-                //    //                  ",sum(round(Runtime, 1)) as Runtime(Hr)" +
-                //    //                  ",sum(round(KWH, 1)) as KWH" +
-                //    //                  ",avg(round(Flow, 2)) as AVGFlow(Ltr-min)" +
-                //    //                  ",SUM(round(24 - Runtime, 1)) as DownTime" +
-                //    //                  " FROM(SELECT *, ROW_NUMBER() OVER(PARTITION BY CONVERT(DATE,[Date])" +  
-                //    //                  " ORDER BY DATE DESC)  AS rn " +
-                //    //                  " FROM[AZAMPUR] WHERE Runtime != 0) t WHERE t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd")+"'";
+        //        //    //string sqlquary = "SELECT ID, sum" +
+        //        //    //                  ", round(Production, 1)) as 'Production(cubicmeter)'" +
+        //        //    //                  ",sum(round(Runtime, 1)) as Runtime(Hr)" +
+        //        //    //                  ",sum(round(KWH, 1)) as KWH" +
+        //        //    //                  ",avg(round(Flow, 2)) as AVGFlow(Ltr-min)" +
+        //        //    //                  ",SUM(round(24 - Runtime, 1)) as DownTime" +
+        //        //    //                  " FROM(SELECT *, ROW_NUMBER() OVER(PARTITION BY CONVERT(DATE,[Date])" +  
+        //        //    //                  " ORDER BY DATE DESC)  AS rn " +
+        //        //    //                  " FROM[AZAMPUR] WHERE Runtime != 0) t WHERE t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-MM-dd") + "'and'" + to.Value.Date.ToString("yyyy-MM-dd")+"'";
 
 
 
-                string sqlquary = " select sum(round(production,1))as production,"
-                                  + " sum(round(runtime, 1)) as runtime,"
-                                  + "sum(round(kwh, 1)) as kwh,"
-                                  + "avg(round(flow, 2)) as avgflow,"
-                                  + "sum(round(24 - runtime, 1)) as downtime"
-                               + " from("
-                                   + "select *,"
-                                      + "row_number() over(partition by convert(date,[date])  order by date desc)  as rn"
-                                    + " from azampur where runtime != 0"
-                                  + ") t where t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-mm-dd") + "'and'" + to.Value.Date.ToString("yyyy-mm-dd") + "'";
+        //        string sqlquary = " select sum(round(production,1))as production,"
+        //                          + " sum(round(runtime, 1)) as runtime,"
+        //                          + "sum(round(kwh, 1)) as kwh,"
+        //                          + "avg(round(flow, 2)) as avgflow,"
+        //                          + "sum(round(24 - runtime, 1)) as downtime"
+        //                       + " from("
+        //                           + "select *,"
+        //                              + "row_number() over(partition by convert(date,[date])  order by date desc)  as rn"
+        //                            + " from azampur where runtime != 0"
+        //                          + ") t where t.rn = 1 and date between '" + from.Value.Date.ToString("yyyy-mm-dd") + "'and'" + to.Value.Date.ToString("yyyy-mm-dd") + "'";
                
-                cnn.Open();
-                SqlCommand cmd = new SqlCommand(sqlquary, cnn);
+        //        cnn.Open();
+        //        SqlCommand cmd = new SqlCommand(sqlquary, cnn);
 
-                SqlDataReader rd = cmd.ExecuteReader();
+        //        SqlDataReader rd = cmd.ExecuteReader();
 
-                while (rd.Read())
+        //        while (rd.Read())
 
-                {
-                    WasaReportModel p = new WasaReportModel();
+        //        {
+        //            WasaReportModel p = new WasaReportModel();
 
-                      p.Id = Convert.ToInt64(rd["ID"]);
+        //              p.Id = Convert.ToInt64(rd["ID"]);
 
-                      p.Date = Convert.ToDateTime(rd["Date"]);
+        //              p.Date = Convert.ToDateTime(rd["Date"]);
 
-                      p.Production = Convert.ToDecimal(rd["Production"]);
+        //              p.Production = Convert.ToDecimal(rd["Production"]);
 
-                      p.Runtime = Convert.ToDecimal(rd["Runtime"]);
+        //              p.Runtime = Convert.ToDecimal(rd["Runtime"]);
 
-                      p.KWH = Convert.ToDecimal(rd["KWH"]);
+        //              p.KWH = Convert.ToDecimal(rd["KWH"]);
 
-                      p.Flow = Convert.ToDecimal(rd["AVGFlow"]);
+        //              p.Flow = Convert.ToDecimal(rd["AVGFlow"]);
 
-                      p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
+        //              p.Stoptime = rd["Downtime"] == DBNull.Value ? 00 : Convert.ToInt64(rd["Downtime"]);
 
-                     rportlist.Add(p);
-                 }
-              }
-             catch (Exception ex)
-             {
+        //             rportlist.Add(p);
+        //         }
+        //      }
+        //     catch (Exception ex)
+        //     {
 
-                //throw ex;
-              }
-             finally
-             {
-                 cnn.Close();
-              }
+        //        //throw ex;
+        //      }
+        //     finally
+        //     {
+        //         cnn.Close();
+        //      }
 
-            //ViewData["WasaReportSum"] = rportlist;
-            //ViewData["WasaReport"] = null;
+        //    //ViewData["WasaReportSum"] = rportlist;
+        //    //ViewData["WasaReport"] = null;
  
-            ViewData["WasaReport"] = rportlist;
-            return View("GetWasaReportSum");
+        //    ViewData["WasaReport"] = rportlist;
+        //    return View("GetWasaReportSum");
 
-        }
+        //}
 
 
 
@@ -386,12 +376,16 @@ namespace WASA.Controllers
         }
 
 
+
         [HttpGet]
         public IActionResult GoDashboard()
         {
 
             return RedirectToAction("Dashboard", "Login");
         }
+
+
+
 
         [HttpGet]
         public IActionResult GoLogout()
