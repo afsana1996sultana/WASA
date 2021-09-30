@@ -12,6 +12,7 @@
 
 
     Html.BeginForm("GetWasaReportFilterTotal", "Report", FormMethod.Get);
+
     <table id="tblPump">
 
         <thead>
@@ -138,10 +139,10 @@
         </p>
         <br />
         
-        <th>Production</th>
-        <th>Runtime</th>
+        <th>Production(cubicmeter)</th>
+        <th>Runtime(Hr)</th>
         <th>KWH</th>
-        <th>AVGFlow</th>
+        <th>AVGFlow(Ltr-min)</th>
         <th>DownTime</th>
 
         @foreach (WASA.Models.WasaReportModelSum D in sumLi)
