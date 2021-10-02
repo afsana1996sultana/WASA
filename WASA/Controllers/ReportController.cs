@@ -24,6 +24,13 @@ namespace WASA.Controllers
 
 
         [HttpGet]
+        public IActionResult GetAllPump()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         public IActionResult GetWasaReport()
         {
             List<WasaReportModel> rportlist = new List<WasaReportModel>();
