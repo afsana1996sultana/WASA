@@ -2035,8 +2035,7 @@ namespace WASA.Controllers
             try
             {
                 cnn.Open();
-                //SqlCommand cmd = new SqlCommand("Select * from SECTOR3 where ID < 101", cnn);
-                SqlCommand cmd = new SqlCommand("Select * from SECTOR3 where Runtime < 18", cnn);
+                 SqlCommand cmd = new SqlCommand("Select TOP (100) * from SECTOR3", cnn);
                 
 
                 SqlDataReader rd = cmd.ExecuteReader();
