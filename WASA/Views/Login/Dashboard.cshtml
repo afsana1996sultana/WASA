@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/css/dashboard.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -25,24 +26,20 @@
                 <nav id="sidebar" class="sidebar-wrapper">
                     <div class="sidebar-content">
                         <div class="sidebar-brand">
-                            <a href="#">Dwasa</a>
+                            <a href="#">Dhaka Wasa Uttara</a>
                             <div id="close-sidebar">
                                 <i class="fas fa-times"></i>
                             </div>
                         </div>
                         <div class="sidebar-header">
                             <div class="user-pic">
-                                <img class="img-responsive img-rounded" src="~/image/Afsana.jpg" />
+                                <img class="img-responsive img-rounded" src="~/image/logo.png" />
                             </div>
                             <div class="user-info">
                                 <span class="user-name">
-                                    <strong>Afsana Sultana</strong>
+                                    <strong>DWASA</strong>
                                 </span>
-                                <span class="user-role">Administrator</span>
-                                <span class="user-status">
-                                    <i class="fa fa-circle"></i>
-                                    <span>Online</span>
-                                </span>
+                                <span class="user-role">Pump house</span>
                             </div>
                         </div>
                         <!-- sidebar-header  -->
@@ -86,29 +83,26 @@
                                 <li class="">
                                     <a href="#">
                                         <i class="fa fa-shopping-cart"></i>
-                                        <span>Control Panel</span>
+                                        <span>Option 1</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="#">
                                         <i class="far fa-gem"></i>
-                                        <span>Hydrological Data</span>
+                                        <span>Option 2</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="#">
                                         <i class="fa fa-chart-line"></i>
-                                        <span>Electrical Data</span>
+                                        <span>Option 3</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a href="#">
                                         <i class="fa fa-globe"></i>
-                                        <span>Pump house Data</span>
+                                        <span>Option 4</span>
                                     </a>
-                                </li>
-                                <li class="header-menu">
-                                    <span>Extra</span>
                                 </li>
                                 <li>
                                     <a href="#">
@@ -136,62 +130,84 @@
                     <hr>
 
                     <div class="row" style="padding-top:10px; margin-left:25px;">
-                        <div class="form-group col-md-12">
-                            <div class="w3-container">
-                                <div class="w3-card-4" style="width:90%">
-                                    <img src="~/image/card7.jpg" alt="Alps" style="width:100%">
+                        @*<div class="form-group col-md-12">
+                <div class="w3-container">
+                    <div class="w3-card-4" style="width:90%">
+                        <img src="~/image/card7.jpg" alt="alps" style="width:100%">
+                    </div>
+                </div>
+            </div>*@
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Bar Chart
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 h-25" id="bar"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Pie Chart
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 h-25" id="pie"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
-                   
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="w3-panel" style="margin-left:30px;">
-                                        <hr>
-                                        <h2>Feeds</h2>
-                                        <table class="w3-table w3-striped w3-white">
-                                            <tr>
-                                                <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-                                                <td>New record, over 90 views.</td>
-                                                <td><i>10 mins</i></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-                                                <td>Database error.</td>
-                                                <td><i>15 mins</i></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-                                                <td>New record, over 40 users.</td>
-                                                <td><i>17 mins</i></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-                                                <td>New comments.</td>
-                                                <td><i>25 mins</i></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-                                                <td>Check transactions.</td>
-                                                <td><i>28 mins</i></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-                                                <td>CPU overload.</td>
-                                                <td><i>35 mins</i></td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-                                                <td>New shares.</td>
-                                                <td><i>39 mins</i></td>
-                                            </tr>
-                                        </table>
+                                <hr>
+                                <h2>Feeds</h2>
+                                <table class="w3-table w3-striped w3-white">
+                                    <tr>
+                                        <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+                                        <td>New record, over 90 views.</td>
+                                        <td><i>10 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+                                        <td>Database error.</td>
+                                        <td><i>15 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+                                        <td>New record, over 40 users.</td>
+                                        <td><i>17 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+                                        <td>New comments.</td>
+                                        <td><i>25 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+                                        <td>Check transactions.</td>
+                                        <td><i>28 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
+                                        <td>CPU overload.</td>
+                                        <td><i>35 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
+                                        <td>New shares.</td>
+                                        <td><i>39 mins</i></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
                     <br />
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="w3-container" style="margin-left:30px;">
@@ -213,7 +229,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                     </div>
                     <br />
                     <br />
@@ -251,9 +267,9 @@
                                 <br>
                                 <br>
                             </div>
-                          </div>
-                          </div>
-                         <br />
+                        </div>
+                    </div>
+                    <br />
 
                     <div class="row">
                         <div class="col-md-12" style="padding-left:57px;">
@@ -284,8 +300,8 @@
                         </div>
 
                     </div>
-                   <br />
-            </main>
+                    <br />
+</main>
         </div>
     </div>
 
@@ -343,6 +359,52 @@
                 navbar.classList.remove("sticky");
             }
         }
+
+
+        var barchart = document.getElementById('bar').getContext('2d');
+        var mybarchart = new chart(barchart, {
+            type: 'bar',
+            data: {
+                labels: ['001', '002', '003'],
+                datasets: [{
+                    label: 'Bar Chart',
+                    data: [100, 200, 300],
+                    backgroundColor: 'rgba(6,128,249)'
+                }]
+            },
+            Options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        })
+
+
+        var piechart = document.getElementById('pie').getContext('2d');
+        var mypiechart = new chart(piechart, {
+            type: 'pie',
+            data: {
+                labels: ['001', '002', '003'],
+                datasets: [{
+                    label: 'Pie Chart',
+                    data: [100, 200, 300],
+                    backgroundColor: 'rgba(6,128,249)'
+                }]
+            },
+            Options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
 
     </script>
     </body>

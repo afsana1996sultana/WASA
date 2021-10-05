@@ -1,15 +1,16 @@
 ﻿
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 
-@if (ViewData["WasaReportPump9"] != null)
+@if (ViewData["WasaReportPump10"] != null)
 
 {
 
-    List<WASA.Models.WasaReportModelPump> Li = (List<WASA.Models.WasaReportModelPump>)ViewData["WasaReportPump9"];
+    List<WASA.Models.WasaReportModel> Li = (List<WASA.Models.WasaReportModel>)ViewData["WasaReportPump10"];
 
-    Html.BeginForm("GetWasaReportFilterPump9", "Report", FormMethod.Get);
+    Html.BeginForm("GetWasaReportFilterPump10", "Report", FormMethod.Get);
 
     <table id="tblPump">
 
@@ -41,9 +42,9 @@
             <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
             <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
             <input type="submit" style="margin-left:7px;" value="Search" />
-            <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReportPump9", "Report")'">
-            <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotalPump9", "Report")'">
-            <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReportPump9", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReportPump10", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotalPump10", "Report")'">
+            <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReportPump10", "Report")'">
             <input type="button" style="margin-left:7px;" value="Pump House" onclick="location.href='@Url.Action("GetAllPump", "Report")'">
             <input type="button" style="margin-left:7px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
             <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
@@ -52,7 +53,7 @@
         </p>
         <br />
 
-        @*<th>Serial No.</th>*@
+        <th>Serial No.</th>
         <th>Date</th>
         <th>Production</th>
         <th>Runtime</th>
@@ -60,9 +61,11 @@
         <th>Flow</th>
         <th>Stoptime</th>
 
-        @foreach (WASA.Models.WasaReportModelPump D in Li)
+        @foreach (WASA.Models.WasaReportModel D in Li)
         {
             <tr>
+
+                <td>@D.Id</td>
 
                 <td>@D.Date</td>
 
@@ -118,7 +121,6 @@
     }
 
 </script>
-
 
 
 
