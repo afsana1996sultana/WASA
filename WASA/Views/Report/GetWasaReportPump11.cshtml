@@ -37,18 +37,11 @@
         <br />
         <br />
 
-        <p style="padding-left:100px; background-color:cornflowerblue; margin-bottom:20px; padding-top:12px; padding-bottom:12px;">
+        <p style="padding-left:1000px; background-color:cornflowerblue; margin-bottom:20px; padding-top:12px; padding-bottom:12px;">
 
-            <span style="font-size:larger;"> From : </span><input type="date" name="from" id="fromDate" value="yyyy-mm-dd">
-            <span style="font-size:larger;"> To : </span><input type="date" name="to" id="toDate" value="yyyy-mm-dd">
-            <input type="submit" style="margin-left:7px;" value="Search" />
-            <input type="button" style="margin-left:7px;" value="Daily Report" onclick="location.href='@Url.Action("GetWasaReportPump11", "Report")'">
-            <input type="button" style="margin-left:7px;" value="Total Report" onclick="location.href='@Url.Action("GetWasaReportTotalPump11", "Report")'">
-            <input type="button" style="margin-left:7px;" value="Refresh" onclick="location.href='@Url.Action("GetWasaReportPump11", "Report")'">
-            <input type="button" style="margin-left:7px;" value="Pump House" onclick="location.href='@Url.Action("GetAllPump", "Report")'">
-            <input type="button" style="margin-left:7px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
-            <input type="button" style="margin-left:7px;" id="btnExport" value="PDF" onclick="Export()" />
-            <input type="button" style="margin-left:7px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
+            <input type="button" style="margin-left:15px;" value="Pump House" onclick="location.href='@Url.Action("GetAllPump", "Report")'">
+            <input type="button" style="margin-left:15px;" value="Home" onclick="window.location='@Url.Action("GoDashboard", "Report")'" />
+            <input type="button" style="margin-left:15px;" value="Logout" onclick="location.href='@Url.Action("GoLogout", "Report")'" />
 
         </p>
         <br />

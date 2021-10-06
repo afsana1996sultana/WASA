@@ -2088,7 +2088,7 @@ namespace WASA.Controllers
             try
             {
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from SECTOR3 where ID < 101", cnn);
+                SqlCommand cmd = new SqlCommand("Select TOP (100) * from SECTOR3", cnn);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 
@@ -2143,7 +2143,7 @@ namespace WASA.Controllers
             cnn = new SqlConnection(connetionString);
             try
             {
-                string sqlquary = "SELECT ID, Date" +
+                string sqlquary = "SELECT Date" +
                                          ", round(Production, 1) as 'Production(M3)'" +
                                         " ,round(Runtime, 1) as Runtime" +
                                         " ,round(KWH, 1) as KWH" +
@@ -2533,7 +2533,7 @@ namespace WASA.Controllers
             try
             {
                 cnn.Open();
-                SqlCommand cmd = new SqlCommand("Select * from STATICAZAMPUR where ID < 101", cnn);
+                SqlCommand cmd = new SqlCommand("Select TOP (20) * from STATICAZAMPUR", cnn);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 

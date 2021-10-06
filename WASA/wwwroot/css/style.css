@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+body {
+  background: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+.container {
+  width: 100%;
+}
+h1 {
+  color: white;
+  font-size: 45px;
+  padding: 25px;
+  text-align: center;
+}
+.controls {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.part1 {
+  width: 100%;
+  height: 400px;
+  /* margin-bottom: 50px; */
+  display: flex;
+  flex-direction: row;
+  padding: 25px 0 25px 0;
+  /* Border */
+  /* border: 2px solid salmon; */
+}
+.part2 {
+  width: 100%;
+  height: 400px;
+  /* margin-top: 50px; */
+  display: flex;
+  flex-direction: row;
+  padding: 25px 0 25px 0;
+  /* Border */
+  /* border: 2px solid rgb(192, 29, 11); */
+}
+.meters {
+  height: inherit;
+  width: 33%;
+  /* Border
+  border: 2px solid yellow; */
+}
+
+/* Pump Control */
+.pumpControl {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.image {
+  width: 50%;
+  height: 180px;
+  margin: 0 25% 0 25%;
+  background-image: url('images/pump_off.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.on,
+.off {
+  width: 160px;
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 20px;
+  background-color: limegreen;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  /* Button Shadow */
+  border: 2px solid #e2ebea;
+  box-shadow: 1px 1px 10px #e2ebea;
+}
+.off {
+  background-color: red;
+}
+
+/* Frequency Meter */
+.frequencyMeter {
+  display: flex;
+  justify-content: center;
+}
+.gauge {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  padding-top: 50px;
+}
+.gauge__body {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background-color: #b4c0be;
+  position: relative;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+  overflow: hidden;
+}
+.gauge__fill {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  background: mediumblue;
+  transform-origin: center top;
+  transform: rotate(0.25turn);
+  transition: 0.2s ease-out;
+}
+.gauge__cover {
+  width: 75%;
+  height: 150%;
+  background: aliceblue;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%;
+  box-sizing: border-box;
+  font-size: 32px;
+}
+
+/* Current Meter */
+.currentMeter {
+  text-align: center;
+  /* padding-top: 30px; */
+}
+.btnOn,
+.btnOff {
+  width: 160px;
+  height: 50px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: limegreen;
+  font-size: 20px;
+  border-radius: 30px;
+  color: white;
+  /* Border */
+  border: 2px solid #e2ebea;
+  box-shadow: 1px 1px 10px #e2ebea;
+}
+.btnOff {
+  background-color: red;
+}
+
+/* Water Level Meter */
+.waterLevelMeter {
+  text-align: center;
+}
+
+/* Unit Meter */
+.unitMeter {
+  text-align: center;
+}
+
+/* Speed Meter */
+.pumpSpeedMeter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+}
+.speed {
+  width: 250px;
+  height: 50px;
+  background-color: whitesmoke;
+  text-align: center;
+  font-size: 25px;
+  color: black;
+  padding: 20px 10px 0 10px;
+  border: 2px solid black;
+}
+.unit {
+  background: transparent;
+  color: whitesmoke;
+  border: none;
+}
