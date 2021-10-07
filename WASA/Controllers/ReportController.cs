@@ -22,6 +22,79 @@ namespace WASA.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Pump1()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Pump2()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Pump3()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Pump4()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Pump5()
+        {
+            return View();
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Pump6()
+        {
+            return View();
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Pump7()
+        {
+            return View();
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Pump8()
+        {
+            return View();
+        }
+
+
+
+        [HttpGet]
+        public IActionResult Pump9()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Pump10()
+        {
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult GetAllPump()
