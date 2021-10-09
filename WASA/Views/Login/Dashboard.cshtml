@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/css/dashboard.css" rel="stylesheet" />
+    <style>
+        .img {
+            width: 270px;
+            height: 270px;
+            border: 1px solid red;
+            background-image: url(../image/pump_off.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
 
 </head>
 
@@ -71,7 +82,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="#">pump 2</a>
+                                                <a href="/Report/Pump2">pump 2</a>
                                             </li>
                                             <li>
                                                 <a href="#">pump 3</a>
@@ -157,34 +168,31 @@
                     <hr>
 
                     <div class="row" style="padding-top:10px; margin-left:25px;">
-                        @*<div class="form-group col-md-12">
-                <div class="w3-container">
-                    <div class="w3-card-4" style="width:90%">
-                        <img src="~/image/card7.jpg" alt="alps" style="width:100%">
-                    </div>
-                </div>
-            </div>*@
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    Bar Chart
-                                </div>
-                                <div class="card-body">
-                                    <canvas class="my-4 h-25" id="bar"></canvas>
-                                </div>
-                            </div>
+                        <div class="col-sm-4">
+                            <div class="img" id="img1">
+                            </div><br />
+                                  <div style="padding-left:70px;">
+                                      <button type="button" class="btn btn-success" onclick="on1()">On</button>
+                                      <button type="button" class="btn btn-danger" onclick="off1()">Off</button>
+                                  </div>
+                        </div>
+                        <div class="col-sm-4">
+                                <div class="img" id="img2">
+                                </div><br />
+                                      <div style="padding-left:70px;">
+                                          <button type="button" class="btn btn-success" onclick="on2()">On</button>
+                                          <button type="button" class="btn btn-danger" onclick="off2()">Off</button>
+                                      </div>
+                        </div>
+                        <div class="col-sm-4">
+                                <div class="img" id="img3">
+                                </div><br />
+                                      <div style="padding-left:70px;">
+                                          <button type="button" class="btn btn-success" onclick="on3()">On</button>
+                                          <button type="button" class="btn btn-danger" onclick="off3()">Off</button>
+                                      </div>
                         </div>
 
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    Pie Chart
-                                </div>
-                                <div class="card-body">
-                                    <canvas class="my-4 h-25" id="pie"></canvas>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -433,6 +441,25 @@
                 }
             }
         })
+
+        function on1() {
+            document.getElementById('img1').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off1() {
+            document.getElementById('img1').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on2() {
+            document.getElementById('img2').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off2() {
+            document.getElementById('img2').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on3() {
+            document.getElementById('img3').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off3() {
+            document.getElementById('img3').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
 
     </script>
     </body>

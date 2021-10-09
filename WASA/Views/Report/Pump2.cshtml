@@ -1,11 +1,390 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@*<html>
+    <style>
+        .img{
+            width: 150px;
+            height: 150px;
+            border: 1px solid red;
+            background-image: url(../image/pump_off.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+    <body>
+        <div class="img" id="img">
+
+        </div>
+
+        <button onclick="on()">On</button>
+        <button onclick="off()">Off</button>
+
+        <script>
+            function on() {
+                document.getElementById('img').style.backgroundImage = 'url(../image/pump_on.png)';
+            }
+            function off() {
+                document.getElementById('img').style.backgroundImage = 'url(../image/pump_off.png)';
+            }
+        </script>
+    </body>
+    </html>*@
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>Sidebar template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/dashboard.css" rel="stylesheet" />
+
+</head>
+
 <body>
-    <button onclick="document.getElementById('myImage').src="/image/pump_off.png">Turn on the light</button>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="page-wrapper chiller-theme toggled">
+                <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <nav id="sidebar" class="sidebar-wrapper">
+                    <div class="sidebar-content">
+                        <div class="sidebar-brand">
+                            <a href="/Report/GoDashboard">Dhaka Wasa Uttara</a>
+                            <div id="close-sidebar">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="sidebar-header">
+                            <div class="user-pic">
+                                <img class="img-responsive img-rounded" src="~/image/logo.png" />
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">
+                                    <strong>DWASA</strong>
+                                </span>
+                                <span class="user-role">Pump 2</span>
+                            </div>
+                        </div>
+                        <!-- sidebar-header  -->
+                        <div class="sidebar-search">
+                            <div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control search-menu" placeholder="Search...">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- sidebar-search  -->
+                        <div class="sidebar-menu">
+                            <ul>
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        <i class="fa fa-tachometer-alt"></i>
+                                        <span>Pump 2</span>
+                                        <span class="badge badge-pill badge-warning">New</span>
+                                    </a>
+                                    <div class="sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="/Report/Pump1">Pump House Control</a>
+                                            </li>
 
-    <img id="myImage" src="~/image/pump_off.png" style="width:100px">
+                                            <li>
+                                                <a href="/Report/GetAll">Production Report</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Option 1</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="far fa-gem"></i>
+                                        <span>Option 2</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="fa fa-chart-line"></i>
+                                        <span>Option 3</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="#">
+                                        <i class="fa fa-globe"></i>
+                                        <span>Option 4</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
 
-    <button onclick="document.getElementById('myImage').src="/image/pump_off.png">Turn off the light</button>
 
+        <!-- sidebar-wrapper  -->
+        <div class="col-md-10">
+            <main class="page-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="navbar" style="overflow:hidden; background-color:cadetblue; width:100%; top:0;">
+                            <h1 style="padding-left:40px;">Dashboard-Pump 2</h1>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row" style="padding-top:10px; margin-left:25px;">
+                        @*<div class="form-group col-md-12">
+                                <div class="w3-container">
+                                    <div class="w3-card-4" style="width:90%">
+                                        <img src="~/image/card7.jpg" alt="alps" style="width:100%">
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Bar Chart
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 h-25" id="bar"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Pie Chart
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 h-25" id="pie"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="w3-panel" style="margin-left:30px;">
+                                <hr>
+                                <h2>Feeds</h2>
+                                <table class="w3-table w3-striped w3-white">
+                                    <tr>
+                                        <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+                                        <td>New record, over 90 views.</td>
+                                        <td><i>10 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
+                                        <td>Database error.</td>
+                                        <td><i>15 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
+                                        <td>New record, over 40 users.</td>
+                                        <td><i>17 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
+                                        <td>New comments.</td>
+                                        <td><i>25 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
+                                        <td>Check transactions.</td>
+                                        <td><i>28 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
+                                        <td>CPU overload.</td>
+                                        <td><i>35 mins</i></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
+                                        <td>New shares.</td>
+                                        <td><i>39 mins</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="w3-container" style="margin-left:30px;">
+                                <hr />
+                                <h2>General Stats</h2>
+                                <p>New Visitors</p>
+                                <div class="w3-grey">
+                                    <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
+                                </div>
+
+                                <p>New Users</p>
+                                <div class="w3-grey">
+                                    <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                                </div>
+
+                                <p>Bounce Rate</p>
+                                <div class="w3-grey">
+                                    <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="w3-container" style="margin-left:30px;">
+                                <h2>Countries</h2>
+                                <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
+                                    <tr>
+                                        <td>United States</td>
+                                        <td>65%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>UK</td>
+                                        <td>15.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Russia</td>
+                                        <td>5.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Spain</td>
+                                        <td>2.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>India</td>
+                                        <td>1.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>France</td>
+                                        <td>1.5%</td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12" style="padding-left:57px;">
+                            <div class="w3-container w3-dark-grey w3-padding-32">
+                                <div class="w3-row">
+                                    <div class="w3-container w3-third">
+                                        <h5 class="w3-bottombar w3-border-green">Demographic</h5>
+                                        <p>Language</p>
+                                        <p>Country</p>
+                                        <p>City</p>
+                                    </div>
+                                    <div class="w3-container w3-third">
+                                        <h5 class="w3-bottombar w3-border-red">System</h5>
+                                        <p>Browser</p>
+                                        <p>OS</p>
+                                        <p>More</p>
+                                    </div>
+                                    <div class="w3-container w3-third">
+                                        <h5 class="w3-bottombar w3-border-orange">Target</h5>
+                                        <p>Users</p>
+                                        <p>Active</p>
+                                        <p>Geo</p>
+                                        <p>Interests</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br />
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="w3-container w3-padding-16 w3-light-grey" style="text-align:center;">
+        <h3>Syscon Solution Ltd</h3>
+        <p>All copy right reserved to you<a href="http://sysconsolution.com/" target="_blank"> sysconsolution.com</a></p>
+    </footer>
+
+
+    <!-- page-wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-apnbgh9b+y1qktv3rn7w3mgpxhu9k/scqsap7huibx39j7fakfpskvxusvfa0b4q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-jzr6spejh4u02d8jot6vlehfe/jqgirrsqqxsffwpi1mquvdayjuar5+76pvcmyl"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(".sidebar-dropdown > a").click(function () {
+            $(".sidebar-submenu").slideUp(200);
+            if (
+                $(this)
+                    .parent()
+                    .hasClass("active")
+            ) {
+                $(".sidebar-dropdown").removeClass("active");
+                $(this)
+                    .parent()
+                    .removeClass("active");
+            } else {
+                $(".sidebar-dropdown").removeClass("active");
+                $(this)
+                    .next(".sidebar-submenu")
+                    .slideDown(200);
+                $(this)
+                    .parent()
+                    .addClass("active");
+            }
+        });
+
+        $("#close-sidebar").click(function () {
+            $(".page-wrapper").removeClass("toggled");
+        });
+        $("#show-sidebar").click(function () {
+            $(".page-wrapper").addClass("toggled");
+        });
+
+        window.onscroll = function () { myFunction() };
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+    </script>
 </body>
 </html>
+
+
+

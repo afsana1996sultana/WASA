@@ -1,56 +1,21 @@
 ﻿<!DOCTYPE html>
     <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            .flip-card {
-                background-color: transparent;
-                width: 300px;
+            .img {
+                width: 320px;
                 height: 300px;
-                perspective: 1000px;
-            }
-
-            .flip-card-inner {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                text-align: center;
-                transition: transform 0.6s;
-                transform-style: preserve-3d;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            }
-
-            .flip-card:hover .flip-card-inner {
-                transform: rotateY(180deg);
-            }
-
-            .flip-card-front, .flip-card-back {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-            }
-
-            .flip-card-front {
-                background-color: #bbb;
-                color: black;
-            }
-
-            .flip-card-back {
-                background-color: #2980b9;
-                color: white;
-                transform: rotateY(180deg);
+                border: 1px solid red;
+                background-image: url(../image/pump_off.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
             }
         </style>
     </head>
-    <body style="background-color:black;">
+    <body style="background-color:white;">
         <div class="container-fluid">
-            <div style="padding-top:20px;">
+            <div>
                 <div style="padding-left: 480px; padding-top: 10px; float: left; background-color: cornflowerblue; margin-left: ">
                     <img src="~/image/logo.png" />
                 </div>
@@ -59,357 +24,207 @@
             <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 1</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>AZAMPUR</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" onclick="location.href='@Url.Action("GetWasaReport", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5 mt-3">View</button>
-                </div>
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 2</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>CHALABAN</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump2", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5">View</button>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 3</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>CIVILAV</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump3", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5">View</button>
-                    </div>
+                        <div class="img" id="img">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
 
+                <div class="col-sm-4">
+                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 2</h2>
+                        <div class="img" id="img2">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on2()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off2()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 3</h2>
+                        <div class="img" id="img3">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on3()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off3()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
+                </div>
             </div>
+            <br />
             <br />
 
             <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 4</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>KAWLER</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump4", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5 mt-3">View</button>
+                        <div class="img" id="img4">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on4()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off4()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
+
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 5</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>NIKUNJO</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump5", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5">View</button>
-                    </div>
+                        <div class="img" id="img5">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on5()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off5()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
+
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 6</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>PRIYANKA</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump6", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5 mt-2">View</button>
-                    </div>
+                        <div class="img" id="img6">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on6()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off6()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
             </div>
+            <br />
             <br />
 
             <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 7</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>SECTOR12</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump7", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5 mt-3">View</button>
+                        <div class="img" id="img7">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on7()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off7()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
+
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 8</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>SECTOR13</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump8", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5">View</button>
-                    </div>
+                        <div class="img" id="img8">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on8()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off8()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
+
                 <div class="col-sm-4">
                     <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 9</h2>
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>SECTOR3</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump9", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5 mt-2">View</button>
-                    </div>
+                        <div class="img" id="img9">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on9()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off9()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
-
             </div>
             <br />
-            <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
-                <div class="col-sm-6">
-                    <h2 style="color: cornflowerblue;">PUMP 10</h2>
-                    <div class="flip-card" style="padding-left:100px;">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>SECTOR9</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump10", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5 mt-3">View</button>
-                </div>
-                <div class="col-sm-6">
-                    <h2 style="color: cornflowerblue; padding-right: 110px;">PUMP 11</h2>
-                    <div class="flip-card" style="padding-left:30px;">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="~/image/pump.jpg" alt="Avatar" style="width:360px;height:300px;">
-                            </div>
-                            <div class="flip-card-back mt-3">
-                                <p>DWASA Pump House Uttara</p>
-                                <h2>STATICAZAMPUR</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-button" style="text-align: center; margin-top:15px; padding-right:40px; margin-right:60px;">
-                        <button type="button" onclick="location.href='@Url.Action("GetWasaReportPump11", "Report")'" class="btn btn-primary btn-lg pl-5 pr-5 mr-5">View</button>
-                    </div>
+            <br />
+
+            <div class="row" style="margin-top:35px; margin-left:250px; text-align:center;">
+                <div class="col-sm-5">
+                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 10</h2>
+                        <div class="img" id="img10">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on10()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off10()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
                 </div>
 
+                <div class="col-sm-5">
+                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 11</h2>
+                        <div class="img" id="img11">
+                        </div><br />
+                              <div style="padding-right:70px;">
+                                  <button type="button" class="btn btn-success" onclick="on11()">On</button>
+                                  <button type="button" class="btn btn-danger" onclick="off11()">Off</button>
+                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                              </div>
+                </div>
             </div>
             <br />
+            <br />
         </div>
-    </body>
-    </html>
-
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <div class="container">
-        <h1>Pump 01</h1>
-
-        <div class="controls">
-            <div class="part1">-->
-                <!-- Pump Control -->
-                <!--<div class="pumpControl meters">
-                    <label class="pump">
-                        <div class="image" id="img"></div>
-
-                        <br />
-                        <button class="on" id="btnOn" onclick="btnOn()">On</button>
-                        <button class="off" id="btnOff" onclick="btnOff()">Off</button>
-                    </label>
-                </div>-->
-                <!-- Frequency Meter -->
-                <!--<div class="frequencyMeter meters">
-                    <div class="gauge">
-                        <div class="gauge__body">
-                            <div class="gauge__fill"></div>
-                            <div class="gauge__cover"></div>
-                        </div>
-                    </div>
-                </div>-->
-                <!-- Current Meter -->
-                <!--<div class="currentMeter meters">
-                    <canvas data-type="radial-gauge"
-                            data-width="250"
-                            data-height="250"
-                            data-units="Amp"
-                            data-title="false"
-                            data-min-value="20"
-                            data-max-value="200"
-                            data-value="33.77"
-                            data-animate-on-init="true"
-                            data-major-ticks="0,20,40,60,80,100,120,140,160,180,200"
-                            data-minor-ticks="2"
-                            data-stroke-ticks="true"
-                            data-highlights='[{"from": 160, "to": 200, "color": "rgba(200, 50, 50, .75)"}]'
-                            data-color-plate="#222"
-                            data-color-major-ticks="#f5f5f5"
-                            data-color-minor-ticks="#ddd"
-                            data-color-title="#fff"
-                            data-color-units="#ccc"
-                            data-color-numbers="#eee"
-                            data-color-needle-start="rgba(240, 128, 128, 1)"
-                            data-color-needle-end="rgba(255, 160, 122, .9)"
-                            data-value-box="true"
-                            data-font-value="Repetition"
-                            data-font-numbers="Repetition"
-                            data-animated-value="true"
-                            data-borders="false"
-                            data-border-shadow-width="0"
-                            data-needle-type="arrow"
-                            data-needle-width="2"
-                            data-needle-circle-size="7"
-                            data-needle-circle-outer="true"
-                            data-needle-circle-inner="false"
-                            data-animation-duration="1500"
-                            data-animation-rule="linear"
-                            data-ticks-angle="250"
-                            data-start-angle="55"
-                            data-color-needle-shadow-down="#333"
-                            data-value-box-width="45"></canvas>
-                    <br />
-                    <button class="btnOn" onclick="animateGauges()">Start</button>
-                    <button class="btnOff" onclick="stopGaugesAnimation()">Stop</button>
-                </div>
-            </div>
-
-            <div class="part2">
-                <div class="waterLevelMeter meters">
-                    <canvas data-type="linear-gauge"
-                            data-width="120"
-                            data-height="300"
-                            data-border-radius="20"
-                            data-borders="0"
-                            data-bar-stroke-width="0"
-                            data-minor-ticks="20"
-                            data-animation-rule="cycle"
-                            data-animation-duration="1000"
-                            data-title="Water Level"
-                            data-units="%"
-                            data-color-value-box-shadow="false"
-                            data-animated-value="true"></canvas>
-                    <br />
-                    <button class="btnOn" onclick="animateGauges()">Start</button>
-                    <button class="btnOff" onclick="stopGaugesAnimation()">Stop</button>
-                </div>
-                <div class="unitMeter meters">
-                    <canvas data-type="radial-gauge"
-                            data-width="250"
-                            data-height="250"
-                            data-units="Kw-H"
-                            data-title="false"
-                            data-min-value="20"
-                            data-max-value="200"
-                            data-value="33.77"
-                            data-animate-on-init="true"
-                            data-major-ticks="0,20,40,60,80,100,120,140,160,180,200"
-                            data-minor-ticks="2"
-                            data-stroke-ticks="true"
-                            data-highlights='[{"from": 160, "to": 200, "color": "rgba(200, 50, 50, .75)"}]'
-                            data-color-plate="#222"
-                            data-color-major-ticks="#f5f5f5"
-                            data-color-minor-ticks="#ddd"
-                            data-color-title="#fff"
-                            data-color-units="#ccc"
-                            data-color-numbers="#eee"
-                            data-color-needle-start="rgba(240, 128, 128, 1)"
-                            data-color-needle-end="rgba(255, 160, 122, .9)"
-                            data-value-box="true"
-                            data-font-value="Repetition"
-                            data-font-numbers="Repetition"
-                            data-animated-value="true"
-                            data-borders="false"
-                            data-border-shadow-width="0"
-                            data-needle-type="arrow"
-                            data-needle-width="2"
-                            data-needle-circle-size="7"
-                            data-needle-circle-outer="true"
-                            data-needle-circle-inner="false"
-                            data-animation-duration="1500"
-                            data-animation-rule="linear"
-                            data-ticks-angle="250"
-                            data-start-angle="55"
-                            data-color-needle-shadow-down="#333"
-                            data-value-box-width="45"></canvas>
-                    <br />
-                    <button class="btnOn" onclick="animateGauges()">Start</button>
-                    <button class="btnOff" onclick="stopGaugesAnimation()">Stop</button>
-                </div>
-                <div class="pumpSpeedMeter meters">
-                    <span class="speed" id="num">0</span>
-                    <span class="speed unit">Rpm</span>
-                    <div>
-                        <button class="btnOn" onclick="plus()">Increase</button>
-                        <button class="btnOff" onclick="reset()">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="gauge.min.js"></script>
-    <script src="main.js"></script>
+            <script>
+                function on() {
+                    document.getElementById('img').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off() {
+                    document.getElementById('img').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on2() {
+                    document.getElementById('img2').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off2() {
+                    document.getElementById('img2').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on3() {
+                    document.getElementById('img3').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off3() {
+                    document.getElementById('img3').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on4() {
+                    document.getElementById('img4').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off4() {
+                    document.getElementById('img4').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on5() {
+                    document.getElementById('img5').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off5() {
+                    document.getElementById('img5').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on6() {
+                    document.getElementById('img6').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off6() {
+                    document.getElementById('img6').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on7() {
+                    document.getElementById('img7').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off7() {
+                    document.getElementById('img7').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on8() {
+                    document.getElementById('img8').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off8() {
+                    document.getElementById('img8').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on9() {
+                    document.getElementById('img9').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off9() {
+                    document.getElementById('img9').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on10() {
+                    document.getElementById('img10').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off10() {
+                    document.getElementById('img10').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+                function on11() {
+                    document.getElementById('img11').style.backgroundImage = 'url(../image/pump_on.png)';
+                }
+                function off11() {
+                    document.getElementById('img11').style.backgroundImage = 'url(../image/pump_off.png)';
+                }
+            </script>
 </body>
-</html>-->
+    </html>
