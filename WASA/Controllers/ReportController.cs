@@ -96,6 +96,16 @@ namespace WASA.Controllers
         }
 
 
+
+        [HttpGet]
+        public IActionResult Pump11()
+        {
+            return View();
+        }
+
+
+
+
         [HttpGet]
         public IActionResult GetAllPump()
         {

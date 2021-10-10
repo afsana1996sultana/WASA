@@ -13,17 +13,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/css/dashboard.css" rel="stylesheet" />
-    <style>
-        .img {
-            width: 270px;
-            height: 270px;
-            border: 1px solid red;
-            background-image: url(../image/pump_off.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-    </style>
 
 </head>
 
@@ -37,7 +26,7 @@
                 <nav id="sidebar" class="sidebar-wrapper">
                     <div class="sidebar-content">
                         <div class="sidebar-brand">
-                            <a href="/Report/GoLogout">Dhaka Wasa Uttara</a>
+                            <a href="/Report/GoDashboard">Dhaka Wasa Uttara</a>
                             <div id="close-sidebar">
                                 <i class="fas fa-times"></i>
                             </div>
@@ -50,7 +39,7 @@
                                 <span class="user-name">
                                     <strong>DWASA</strong>
                                 </span>
-                                <span class="user-role">Pump house</span>
+                                <span class="user-role">Pump 3</span>
                             </div>
                         </div>
                         <!-- sidebar-header  -->
@@ -72,44 +61,17 @@
                                 <li class="sidebar-dropdown">
                                     <a href="#">
                                         <i class="fa fa-tachometer-alt"></i>
-                                        <span>Pump House</span>
+                                        <span>Pump 3</span>
                                         <span class="badge badge-pill badge-warning">New</span>
                                     </a>
                                     <div class="sidebar-submenu">
                                         <ul>
                                             <li>
-                                                <a href="/Report/Pump1">Pump 1</a>
+                                                <a href="">Pump House Control</a>
                                             </li>
 
                                             <li>
-                                                <a href="/Report/Pump2">pump 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump3">pump 3</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump4">pump 4</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump5">pump 5</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump6">pump 6</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump7">Pump 7</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump8">pump 8</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump9">Pump 9</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump10">Pump 10</a>
-                                            </li>
-                                            <li>
-                                                <a href="/Report/Pump11">Pump 11</a>
+                                                <a href="/Report/GetAll">Production Report</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -138,12 +100,6 @@
                                         <span>Option 4</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>Calendar</span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -158,37 +114,33 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="navbar" style="overflow:hidden; background-color:cadetblue; width:100%; top:0;">
-                            <h1 style="padding-left:40px;">Dashboard</h1>
+                            <h1 style="padding-left:40px;">Dashboard-Pump 3</h1>
                         </div>
                     </div>
                     <hr>
 
                     <div class="row" style="padding-top:10px; margin-left:25px;">
-                        <div class="col-sm-4">
-                            <div class="img" id="img1">
-                            </div><br />
-                                  <div style="padding-left:70px;">
-                                      <button type="button" class="btn btn-success" onclick="on1()">On</button>
-                                      <button type="button" class="btn btn-danger" onclick="off1()">Off</button>
-                                  </div>
-                        </div>
-                        <div class="col-sm-4">
-                                <div class="img" id="img2">
-                                </div><br />
-                                      <div style="padding-left:70px;">
-                                          <button type="button" class="btn btn-success" onclick="on2()">On</button>
-                                          <button type="button" class="btn btn-danger" onclick="off2()">Off</button>
-                                      </div>
-                        </div>
-                        <div class="col-sm-4">
-                                <div class="img" id="img3">
-                                </div><br />
-                                      <div style="padding-left:70px;">
-                                          <button type="button" class="btn btn-success" onclick="on3()">On</button>
-                                          <button type="button" class="btn btn-danger" onclick="off3()">Off</button>
-                                      </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Bar Chart
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 h-25" id="bar"></canvas>
+                                </div>
+                            </div>
                         </div>
 
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    Pie Chart
+                                </div>
+                                <div class="card-body">
+                                    <canvas class="my-4 h-25" id="pie"></canvas>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -333,7 +285,7 @@
                     </div>
                     <br />
                 </div>
-        </main>
+            </main>
         </div>
     </div>
 
@@ -341,7 +293,7 @@
         <h3>Syscon Solution Ltd</h3>
         <p>All copy right reserved to you<a href="http://sysconsolution.com/" target="_blank"> sysconsolution.com</a></p>
     </footer>
-       
+
 
     <!-- page-wrapper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -392,71 +344,10 @@
             }
         }
 
-
-        var barchart = document.getElementById('bar').getContext('2d');
-        var mybarchart = new chart(barchart, {
-            type: 'bar',
-            data: {
-                labels: ['001', '002', '003'],
-                datasets: [{
-                    label: 'Bar Chart',
-                    data: [100, 200, 300],
-                    backgroundColor: 'rgba(6,128,249)'
-                }]
-            },
-            Options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
-                }
-            }
-        })
-
-
-        var piechart = document.getElementById('pie').getContext('2d');
-        var mypiechart = new chart(piechart, {
-            type: 'pie',
-            data: {
-                labels: ['001', '002', '003'],
-                datasets: [{
-                    label: 'Pie Chart',
-                    data: [100, 200, 300],
-                    backgroundColor: 'rgba(6,128,249)'
-                }]
-            },
-            Options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        })
-
-        function on1() {
-            document.getElementById('img1').style.backgroundImage = 'url(../image/pump_on.png)';
-        }
-        function off1() {
-            document.getElementById('img1').style.backgroundImage = 'url(../image/pump_off.png)';
-        }
-        function on2() {
-            document.getElementById('img2').style.backgroundImage = 'url(../image/pump_on.png)';
-        }
-        function off2() {
-            document.getElementById('img2').style.backgroundImage = 'url(../image/pump_off.png)';
-        }
-        function on3() {
-            document.getElementById('img3').style.backgroundImage = 'url(../image/pump_on.png)';
-        }
-        function off3() {
-            document.getElementById('img3').style.backgroundImage = 'url(../image/pump_off.png)';
-        }
-
     </script>
-    </body>
-  </html>
+</body>
+</html>
+
+
+
+
