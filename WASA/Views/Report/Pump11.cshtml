@@ -39,7 +39,7 @@
                                 <span class="user-name">
                                     <strong>DWASA</strong>
                                 </span>
-                                <span class="user-role">Pump 11</span>
+                                <span class="user-role">Pump house 11</span>
                             </div>
                         </div>
                         <!-- sidebar-header  -->
@@ -61,7 +61,7 @@
                                 <li class="sidebar-dropdown">
                                     <a href="#">
                                         <i class="fa fa-tachometer-alt"></i>
-                                        <span>Pump 11</span>
+                                        <span>Pump house 11</span>
                                         <span class="badge badge-pill badge-warning">New</span>
                                     </a>
                                     <div class="sidebar-submenu">
@@ -71,7 +71,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="/Report/GetAll">Production Report</a>
+                                                <a href="">Production Report</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -114,7 +114,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="navbar" style="overflow:hidden; background-color:cadetblue; width:100%; top:0;">
-                            <h1 style="padding-left:40px;">Dashboard-Pump 11</h1>
+                            <h1 style="padding-left:40px;">Dashboard</h1>
                         </div>
                     </div>
                     <hr>
@@ -142,8 +142,7 @@
                             </div>
                         </div>
                     </div>
-                    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="w3-panel" style="margin-left:30px;">
@@ -343,6 +342,51 @@
                 navbar.classList.remove("sticky");
             }
         }
+
+
+        var barchart = document.getElementById('bar').getContext('2d');
+        var mybarchart = new chart(barchart, {
+            type: 'bar',
+            data: {
+                labels: ['001', '002', '003'],
+                datasets: [{
+                    label: 'Bar Chart',
+                    data: [100, 200, 300],
+                    backgroundColor: 'rgba(6,128,249)'
+                }]
+            },
+            Options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
+
+        var piechart = document.getElementById('pie').getContext('2d');
+        var mypiechart = new chart(piechart, {
+            type: 'bar',
+            data: {
+                labels: ['001', '002', '003'],
+                datasets: [{
+                    label: 'Pie Chart',
+                    data: [100, 200, 300],
+                    backgroundColor: 'rgba(6,128,249)'
+                }]
+            },
+            Options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
 
     </script>
 </body>

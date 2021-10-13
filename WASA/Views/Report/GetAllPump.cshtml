@@ -1,230 +1,235 @@
-﻿<!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            .img {
-                width: 320px;
-                height: 300px;
-                border: 1px solid red;
-                background-image: url(../image/pump_off.png);
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-        </style>
-    </head>
-    <body style="background-color:white;">
-        <div class="container-fluid">
-            <div>
-                <div style="padding-left: 480px; padding-top: 10px; float: left; background-color: cornflowerblue; margin-left: ">
-                    <img src="~/image/logo.png" />
-                </div>
-                <h1 style="background-color: cornflowerblue; padding-top:60px; padding-bottom:35px;"> Uttara Pump House</h1>
-            </div>
-            <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 1</h2>
-                        <div class="img" id="img">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
+﻿
+<html>
+<head>
+    <style>
+        .img {
+            width: 350px;
+            height: 300px;
+            border: 2px solid black;
+            background-image: url(../image/pump_off.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: white;
+            
+        }
+    </style>
+</head>
 
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 2</h2>
-                        <div class="img" id="img2">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on2()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off2()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 3</h2>
-                        <div class="img" id="img3">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on3()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off3()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-            </div>
-            <br />
-            <br />
-
-            <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 4</h2>
-                        <div class="img" id="img4">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on4()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off4()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 5</h2>
-                        <div class="img" id="img5">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on5()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off5()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 6</h2>
-                        <div class="img" id="img6">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on6()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off6()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-            </div>
-            <br />
-            <br />
-
-            <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 7</h2>
-                        <div class="img" id="img7">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on7()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off7()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 8</h2>
-                        <div class="img" id="img8">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on8()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off8()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-
-                <div class="col-sm-4">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 9</h2>
-                        <div class="img" id="img9">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on9()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off9()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-            </div>
-            <br />
-            <br />
-
-            <div class="row" style="margin-top:35px; margin-left:250px; text-align:center;">
-                <div class="col-sm-5">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 10</h2>
-                        <div class="img" id="img10">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on10()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off10()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-
-                <div class="col-sm-5">
-                    <h2 style="color: cornflowerblue; padding-right: 40px; margin-right: 40px;">PUMP 11</h2>
-                        <div class="img" id="img11">
-                        </div><br />
-                              <div style="padding-right:70px;">
-                                  <button type="button" class="btn btn-success" onclick="on11()">On</button>
-                                  <button type="button" class="btn btn-danger" onclick="off11()">Off</button>
-                                  <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
-                              </div>
-                </div>
-            </div>
-            <br />
-            <br />
+<body style="background-image: url('../image/bg.jpg'); background-size: cover; background-repeat: no-repeat; text-align:center;">
+    <div class="container-fluid" style="background-color: darkblue;">
+        <div style="color: white; padding-bottom:3px;">
+            <a href="/Report/GoDashboard"> <img src="~/image/logo.png" /></a>
+            <h1> Uttara Pump House</h1>
         </div>
-            <script>
-                function on() {
-                    document.getElementById('img').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off() {
-                    document.getElementById('img').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on2() {
-                    document.getElementById('img2').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off2() {
-                    document.getElementById('img2').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on3() {
-                    document.getElementById('img3').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off3() {
-                    document.getElementById('img3').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on4() {
-                    document.getElementById('img4').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off4() {
-                    document.getElementById('img4').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on5() {
-                    document.getElementById('img5').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off5() {
-                    document.getElementById('img5').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on6() {
-                    document.getElementById('img6').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off6() {
-                    document.getElementById('img6').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on7() {
-                    document.getElementById('img7').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off7() {
-                    document.getElementById('img7').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on8() {
-                    document.getElementById('img8').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off8() {
-                    document.getElementById('img8').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on9() {
-                    document.getElementById('img9').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off9() {
-                    document.getElementById('img9').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on10() {
-                    document.getElementById('img10').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off10() {
-                    document.getElementById('img10').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-                function on11() {
-                    document.getElementById('img11').style.backgroundImage = 'url(../image/pump_on.png)';
-                }
-                function off11() {
-                    document.getElementById('img11').style.backgroundImage = 'url(../image/pump_off.png)';
-                }
-            </script>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
+            <div class="col-sm-4">
+                <h3 style="color:black; padding-right: 40px; margin-right: 40px;">PUMP House 1</h3>
+                <div class="img" id="img">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 2</h3>
+                <div class="img" id="img2">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on2()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off2()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 3</h3>
+                <div class="img" id="img3">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on3()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off3()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP house 4</h3>
+                <div class="img" id="img4">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on4()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off4()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 5</h3>
+                <div class="img" id="img5">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on5()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off5()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 6</h3>
+                <div class="img" id="img6">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on6()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off6()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="row" style="margin-top:35px; margin-left:35px; text-align:center;">
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP house 7</h3>
+                <div class="img" id="img7">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on7()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off7()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 8</h3>
+                <div class="img" id="img8">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on8()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off8()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 9</h3>
+                <div class="img" id="img9">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on9()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off9()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="row" style="margin-top:35px; margin-left:250px; text-align:center;">
+            <div class="col-sm-5">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 10</h3>
+                <div class="img" id="img10">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on10()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off10()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <h3 style="color: black; padding-right: 40px; margin-right: 40px;">PUMP House 11</h3>
+                <div class="img" id="img11">
+                </div><br />
+                <div style="padding-right:70px;">
+                    <button type="button" class="btn btn-success" onclick="on11()">On</button>
+                    <button type="button" class="btn btn-danger" onclick="off11()">Off</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("GetWasaReport", "Report")'">View</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <script>
+        function on() {
+            document.getElementById('img').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off() {
+            document.getElementById('img').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on2() {
+            document.getElementById('img2').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off2() {
+            document.getElementById('img2').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on3() {
+            document.getElementById('img3').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off3() {
+            document.getElementById('img3').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on4() {
+            document.getElementById('img4').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off4() {
+            document.getElementById('img4').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on5() {
+            document.getElementById('img5').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off5() {
+            document.getElementById('img5').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on6() {
+            document.getElementById('img6').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off6() {
+            document.getElementById('img6').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on7() {
+            document.getElementById('img7').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off7() {
+            document.getElementById('img7').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on8() {
+            document.getElementById('img8').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off8() {
+            document.getElementById('img8').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on9() {
+            document.getElementById('img9').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off9() {
+            document.getElementById('img9').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on10() {
+            document.getElementById('img10').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off10() {
+            document.getElementById('img10').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+        function on11() {
+            document.getElementById('img11').style.backgroundImage = 'url(../image/pump_on.png)';
+        }
+        function off11() {
+            document.getElementById('img11').style.backgroundImage = 'url(../image/pump_off.png)';
+        }
+    </script>
 </body>
-    </html>
+</html>
