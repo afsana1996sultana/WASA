@@ -67,11 +67,11 @@
                                     <div class="sidebar-submenu">
                                         <ul>
                                             <li>
-                                                <a href="">Pump House Control</a>
+                                                <a href="">Pump Control panel</a>
                                             </li>
 
                                             <li>
-                                                <a href="">Production Report</a>
+                                                <a href="/Report/GetWasaReport">Production Report</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -120,13 +120,6 @@
                     <hr>
 
                     <div class="row" style="padding-top:10px; margin-left:25px;">
-                        @*<div class="form-group col-md-12">
-                                <div class="w3-container">
-                                    <div class="w3-card-4" style="width:90%">
-                                        <img src="~/image/card7.jpg" alt="alps" style="width:100%">
-                                    </div>
-                                </div>
-                            </div>*@
                         <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-header">
@@ -149,8 +142,9 @@
                             </div>
                         </div>
                     </div>
-                    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="w3-panel" style="margin-left:30px;">
@@ -308,6 +302,9 @@
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-jzr6spejh4u02d8jot6vlehfe/jqgirrsqqxsffwpi1mquvdayjuar5+76pvcmyl"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/js/BarChart.js"></script>
+
     <script type="text/javascript">
         $(".sidebar-dropdown > a").click(function () {
             $(".sidebar-submenu").slideUp(200);
@@ -367,7 +364,7 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: true
                         }
                     }]
                 }
